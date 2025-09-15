@@ -60,3 +60,16 @@ const Card1: React.FC<CardProps> = ({ icon, title, subtitle }) => {
 };
 
 export default Card1;
+
+
+
+
+
+
+
+
+
+
+
+
+

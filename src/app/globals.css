@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -210,3 +212,9 @@
 @media (max-width: 640px) {
   .card-glass { box-shadow: 0 8px 20px rgba(3,6,12,0.55); }
 }
+body {
+  @apply font-sans;
+}
+
+
+

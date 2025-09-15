@@ -6,7 +6,12 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],   // 👈 override default Tailwind font
+        poppins: ['Poppins', 'sans-serif'], // 👈 optional utility class
+      },
+    },
   },
   plugins: [],
 };

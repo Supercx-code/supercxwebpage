@@ -3,6 +3,7 @@ import { LuMoveRight } from "react-icons/lu";
 import CardsGrid from "./components/CardsGrid";
 import Card1 from "./components/Card1";
 import CardsCarousel from "./components/sliding_cardsCarousel";
+import GlassyButton from "./components/GlassyButton";
 
 
 
@@ -38,18 +39,7 @@ export default function Home() {
 
           {/* CTA Button */}
           <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
-            <button
-              className="flex flex-row gap-2 items-center 
-                        px-5 py-2 
-                        bg-gradient-to-b from-[#10151D] to-[#1D1F1E] 
-                        text-white text-sm font-medium 
-                        rounded-full 
-                        transition transform duration-200 
-                        hover:scale-105 hover:brightness-110"
-            >
-              Get in Touch
-              <LuMoveRight className="text-sm" />
-            </button>
+            <GlassyButton>Get in Touch →</GlassyButton>
           </div>
         </header>
 
@@ -57,7 +47,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mt-20 px-4">
           {/* Heading */}
           <h1
-            className="text-[48px] md:text-[64px] font-bold leading-[1.2] text-center"
+            className="mx-auto w-full max-w-[1200px] text-[48px] md:text-[64px] font-bold leading-[1.2] text-center"
             style={{
               background:
                 "radial-gradient(circle, rgba(230,230,230,1) 70%, rgba(150,150,150,0.4) 100%)",
@@ -65,9 +55,9 @@ export default function Home() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Revolutionize Customer Experience <br />
-            with AI-Powered Solutions
+            Revolutionize Customer Experience with AI-Powered Solutions
           </h1>
+
 
           {/* Subheading */}
           <p className="mt-6 text-base md:text-lg font-normal text-gray-300 max-w-2xl mx-auto leading-relaxed">
