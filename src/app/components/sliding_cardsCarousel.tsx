@@ -1,7 +1,10 @@
+// src/app/components/sliding_cardsCarousel.tsx
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
-import Card2 from "./sliding_cards";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { motion, Variants } from "framer-motion";
+import Card2 from "./sliding_cards"; // adjust path if needed
+import GlassyButton from "./GlassyButton";
 
 type Item = {
   id: number;
@@ -10,7 +13,6 @@ type Item = {
   icon?: React.ReactNode;
 };
 
-// ✅ keep this above the component
 const data: Item[] = [
   {
     id: 1,
@@ -34,8 +36,9 @@ const data: Item[] = [
 
 export default function CardsCarousel() {
   const [active, setActive] = useState<number>(0);
+  const offsetSpacing = 520; // tweak for horizontal spacing
 
-  // keyboard navigation
+  // keyboard nav
   const onKey = useCallback((e: KeyboardEvent) => {
     if (e.key === "ArrowLeft") setActive((s) => (s - 1 + data.length) % data.length);
     if (e.key === "ArrowRight") setActive((s) => (s + 1) % data.length);
@@ -46,77 +49,108 @@ export default function CardsCarousel() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
-  const offsetSpacing = 450;
+  // Precompute layout values
+  const positioned = useMemo(() => {
+    const n = data.length;
+    return data.map((item, idx) => {
+      let dist = (idx - active) % n;
+      if (dist < -Math.floor(n / 2)) dist += n;
+      if (dist > Math.floor(n / 2)) dist -= n;
+      const offsetX = dist * offsetSpacing;
+      const yOffset = dist === 0 ? 0 : 18;
+      const isActive = dist === 0;
+      const zIndex = 50 - Math.abs(dist);
+      const opacity = Math.abs(dist) > 2 ? 0 : 1;
+      return { item, idx, dist, offsetX, yOffset, isActive, zIndex, opacity };
+    });
+  }, [active]);
+
+  // typed variants — use string easing to avoid TS complaints
+  const containerVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
   return (
-        <section className="w-full py-16 flex flex-col items-center relative overflow-hidden">
-          {/* Section header */}
-          <div className="text-center mb-12">
-            {/* pill */}
-            <div
-              className="inline-flex flex-row gap-2 items-center 
-                        w-fit
-                        px-5 py-2 
-                        bg-gradient-to-b from-[#10151D] to-[#1D1F1E] 
-                        text-sm font-medium 
-                        rounded-full 
-                        transition transform duration-200 
-                        hover:scale-105 hover:brightness-110"
-            >
-              <img
-                src="/supercx-icon.svg"
-                alt="icon"
-                className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-              />
-              Case Studies
-            </div>
+    <section className="w-full py-20 flex flex-col items-center relative overflow-hidden">
+      {/* Section header */}
+      <motion.div initial="hidden" animate="visible" variants={containerVariants} className="text-center mb-12">
+        <div className="inline-flex items-center mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+          <GlassyButton className="px-6 py-2 text-base">
+            <img src="/supercx-icon.svg" alt="icon" className="w-5 h-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]" />
+            <span>Case Studies</span>
+          </GlassyButton>
+        </div>
 
+        <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-subtle-gradient">
+          <span>Real Results, Real</span> <br />
+          <span>Businesses</span>
+        </h2>
+      </motion.div>
 
-            {/* heading */}
-            <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-subtle-gradient">
-              <span>Real Results, Real</span> <br />
-              <span>Businesses</span>
-            </h2>
-          </div>
-      {/* Carousel */}
-      <div className="relative w-full h-[420px]">
-        {data.map((item, idx) => {
-          const n = data.length;
-          let dist = (idx - active) % n;
-          if (dist < -Math.floor(n / 2)) dist += n;
-          if (dist > Math.floor(n / 2)) dist -= n;
+      {/* Carousel area */}
+      <div className="relative w-full h-[520px]">
+        {positioned.map(({ item, idx, offsetX, yOffset, isActive, zIndex, opacity }) => {
+          // visual scale
+          const scale = isActive ? 1 : Math.max(0.78, 1 - Math.abs(offsetX) / 3000);
 
-          const offsetX = dist * offsetSpacing;
-          const yOffset = dist === 0 ? 0 : 10;
-          const isActive = dist === 0;
-
-          const zIndex = 50 - Math.abs(dist);
-          const opacity = Math.abs(dist) > 2 ? 0 : 1;
-
-          const widthClass = isActive ? "w-[600px] h-[340px]" : "w-[180px] h-[120px]";
+          // explicit sizing — helps avoid overflow of content
+          const width = isActive ? 760 : 220;
+          const height = isActive ? 480 : 140;
 
           return (
+            // Outer wrapper centers the element using translate(-50%,-50%)
             <div
               key={item.id}
               style={{
                 position: "absolute",
                 left: "50%",
                 top: "50%",
-                transform: `translate(-50%, -50%) translateX(${offsetX}px) translateY(${yOffset}px)`,
+                transform: "translate(-50%, -50%)",
                 zIndex,
-                opacity,
-                transition: "transform 700ms cubic-bezier(.2,.9,.2,1), opacity 400ms",
-                willChange: "transform, opacity",
+                pointerEvents: isActive ? "auto" : "none", // only active is interactive
               }}
-              className={`flex items-center justify-center ${widthClass}`}
+            >
+              {/* Animate x/y/scale/opacity relative to the centered wrapper */}
+              <motion.div
+              key={item.id}
+              drag="x"                         // ✅ enable horizontal drag
+              dragConstraints={{ left: 0, right: 0 }} // prevents infinite dragging
+              onDragEnd={(e, info) => {
+                // ✅ snap to closest card based on drag distance
+                if (info.offset.x < -100) {
+                  setActive((active + 1) % data.length);  // swipe left → next card
+                } else if (info.offset.x > 100) {
+                  setActive((active - 1 + data.length) % data.length); // swipe right → prev card
+                }
+              }}
+              onClick={() => setActive(idx)}   // ✅ click card → make active
+              animate={{
+                x: offsetX,
+                y: yOffset,
+                scale: isActive ? 1 : 0.85,
+                opacity,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 24,
+              }}
+              className="flex items-center justify-center cursor-pointer"
+              style={{ width, height }}
             >
               <Card2
                 title={item.title}
                 subtitle={item.subtitle}
                 icon={<span className="text-lg">{item.icon}</span>}
                 isActive={isActive}
-                onClick={() => setActive(idx)}
               />
+            </motion.div>
+
             </div>
           );
         })}
@@ -125,9 +159,10 @@ export default function CardsCarousel() {
       {/* Dots */}
       <div className="mt-8 flex items-center justify-center gap-3">
         {data.map((_, i) => (
-          <button
+          <motion.button
             key={i}
             onClick={() => setActive(i)}
+            whileTap={{ scale: 0.92 }}
             className={`h-2 rounded-full transition-all duration-300 ${
               i === active ? "w-6 bg-white" : "w-2 bg-white/30"
             }`}

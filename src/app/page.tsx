@@ -16,30 +16,34 @@ export default function Home() {
         style={{ backgroundImage: "url('/landing-bg-1.svg')" }}
       >
         {/* NAVBAR */}
-        <header className="relative z-20 flex items-center justify-between w-full max-w-6xl mx-auto px-6 py-6">
-          {/* Logo */}
-          <img src="/logo.svg" alt="Logo" className="h-12 w-auto" />
+        <header className="relative z-20 flex items-center w-full max-w-7xl mx-auto px-8 py-6">
+          {/* Logo (bigger + stick left) */}
+          <div className="flex-shrink-0">
+            <img src="/logo.svg" alt="Logo" className="h-16 w-auto" /> {/* increased size */}
+          </div>
 
-          {/* Nav Links */}
+          {/* Nav Links (center pill, longer & bigger) */}
           <nav
-            className="flex items-center gap-10 px-8 py-3
-            rounded-full
-            bg-gradient-to-r from-black/80 via-purple-800/40 to-black/80
-            backdrop-blur-xl
-            border border-white/10
-            shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),0_4px_25px_rgba(0,0,0,0.6)]"
+            className="flex items-center gap-12 px-12 py-4 mx-auto
+              rounded-full
+              bg-gradient-to-r from-black/80 via-purple-800/40 to-black/80
+              backdrop-blur-xl
+              border border-white/10
+              shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),0_4px_25px_rgba(0,0,0,0.6)]"
           >
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">Home</a>
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">Products</a>
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">Services</a>
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">About Us</a>
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">Blog</a>
-            <a href="#" className="text-sm text-white/90 hover:text-pink-400 transition">Contact</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Home</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Products</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Services</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">About Us</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Blog</a>
+            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Contact</a>
           </nav>
 
-          {/* CTA Button */}
-          <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
-            <GlassyButton>Get in Touch →</GlassyButton>
+          {/* CTA Button (push far right) */}
+          <div className="flex-shrink-0 ml-auto">
+            <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
+              <GlassyButton>Get in Touch →</GlassyButton>
+            </div>
           </div>
         </header>
 
@@ -130,19 +134,8 @@ export default function Home() {
 
           {/* Explore Services Button */}
           <div className="mt-6">
-            <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
-              <button
-                className="flex flex-row items-center gap-2 
-                          px-5 py-2 
-                          bg-gradient-to-b from-[#10151D] to-[#1D1F1E] 
-                          text-white text-sm font-medium 
-                          rounded-full 
-                          transition transform duration-200 
-                          hover:scale-105 hover:brightness-110"
-              >
-                Explore Services
-                <LuMoveRight className="text-sm" />
-              </button>
+                        <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
+              <GlassyButton>Explore Services →</GlassyButton>
             </div>
           </div>
         </div>
@@ -363,27 +356,20 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-black/10" />
 
         {/* Content INSIDE the dome */}
-        <div className="relative max-w-6xl mx-auto text-center pt-[100px] md:pt-[140px] lg:pt-[120px]">
-          {/* pill */}
-          {/* pill as button */}
-            <div className="mx-auto w-fit mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-              <button
-                className="flex items-center gap-2 
-                          px-5 py-2 
-                          bg-gradient-to-b from-[#10151D] to-[#1D1F1E] 
-                          text-white text-sm font-medium 
-                          rounded-full 
-                          transition transform duration-200 
-                          hover:scale-105 hover:brightness-110"
-              >
-                <img
-                  src="/supercx-icon.svg"
-                  alt="icon"
-                  className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-                />
-                <span>Super Products</span>
-              </button>
-            </div>
+          <div className="relative max-w-6xl mx-auto text-center pt-[100px] md:pt-[140px] lg:pt-[120px]">
+            {/* pill */}
+            {/* pill as button */}
+              <div className="mx-auto w-fit mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+                <GlassyButton>
+                  <img
+                    src="/supercx-icon.svg"
+                    alt="icon"
+                    className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+                  />
+                  <span>Super Products</span>
+                </GlassyButton>
+          </div>
+
 
 
 
@@ -398,7 +384,7 @@ export default function Home() {
 
 
           {/* cards */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
             <img src="/products/Card.svg" alt="SuperCX" className="w-[320px] h-auto" />
             <img src="/products/Card1.svg" alt="SuperVoice" className="w-[320px] h-auto" />
             <img src="/products/Card2.svg" alt="SuperDesk" className="w-[320px] h-auto" />
@@ -408,23 +394,16 @@ export default function Home() {
 
           {/* CTA */}
           <div className="mx-auto w-fit mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px] mt-8">
-            <button
-              className="flex items-center gap-2 
-                        px-5 py-2 
-                        bg-gradient-to-b from-[#10151D] to-[#1D1F1E] 
-                        text-white text-sm font-medium 
-                        rounded-full 
-                        transition transform duration-200 
-                        hover:scale-105 hover:brightness-110"
-            >
+            <GlassyButton>
               <img
                 src="/supercx-icon.svg"
                 alt="icon"
                 className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
               />
               <span>Learn More</span>
-            </button>
-</div>
+            </GlassyButton>
+          </div>
+
 
         </div>
       </section>
@@ -473,14 +452,15 @@ export default function Home() {
   {/* Content */}
   <div className="relative z-10 w-full px-8 -mt-16">
     {/* Pill */}
-    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full 
-                    bg-white/10 border border-white/20 shadow-sm text-sm font-medium text-white mb-6">
-      <img
-        src="/supercx-icon.svg"
-        alt="icon"
-        className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-      />
-      What Our Clients Say
+    <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+      <GlassyButton>
+        <img
+          src="/supercx-icon.svg"
+          alt="icon"
+          className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+        />
+        <span>What Our Clients Say</span>
+      </GlassyButton>
     </div>
 
     <img
@@ -536,10 +516,12 @@ export default function Home() {
     </h2>
 
         {/* Pill */}
-    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full 
-                    bg-white/10 border border-white/20 shadow-sm text-sm font-medium text-white mb-6">
-      AI Solutions Tailored for Your Industry
-    </div>
+      <div className="inline-flex items-center mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+        <GlassyButton>
+          <span>AI Solutions Tailored for Your Industry</span>
+        </GlassyButton>
+      </div>
+
 
     {/* Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">

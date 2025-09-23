@@ -19,16 +19,15 @@ export default function Card2({
   onClick,
 }: CardProps) {
   return (
-      <button
-        onClick={onClick}
-        aria-pressed={isActive}
-        className={`relative group focus:outline-none transition-all duration-500
-          ${isActive ? "w-[600px] h-[340px] p-6 rounded-2xl" : "w-[180px] h-[120px] p-3 rounded-xl"}
-          ${isActive ? "bg-white/5 backdrop-blur-sm border border-white/10" : "bg-white/5 border border-white/5"}
-          shadow-sm text-left flex flex-col items-center justify-center
-          ${!isActive ? "hover:border-white/20 hover:shadow-md" : ""}`}
-      >
-
+    <button
+      onClick={onClick}
+      aria-pressed={isActive}
+      className={`relative group focus:outline-none transition-all duration-500
+        ${isActive ? "w-[600px] h-[380px] p-6 rounded-2xl" : "w-[180px] h-[120px] p-3 rounded-xl"}
+        ${isActive ? "bg-white/5 backdrop-blur-sm border border-white/10" : "bg-white/5 border border-white/5"}
+        shadow-sm text-left flex flex-col items-center justify-center
+        ${!isActive ? "hover:border-white/20 hover:shadow-md" : ""}`}
+    >
       {/* Inactive card */}
       {!isActive && (
         <>
@@ -43,11 +42,13 @@ export default function Card2({
       {isActive && (
         <div className="flex flex-col h-full justify-between w-full">
           {/* pill */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full 
-                          bg-white/10 text-sm text-white/80 mb-6 
-                          w-fit max-w-fit">
-            <div className="w-5 h-5 rounded-md bg-white/20 flex items-center justify-center">
-              {icon ?? <span>🛒</span>}
+          <div
+            className="inline-flex items-center gap-3 px-6 py-2 rounded-full 
+                       bg-white/15 text-base font-semibold text-white mb-8 
+                       w-fit max-w-fit shadow-md"
+          >
+            <div className="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center">
+              {icon ?? <span className="text-lg">🛒</span>}
             </div>
             <span className="tracking-wide">{subtitle}</span>
           </div>
@@ -58,15 +59,13 @@ export default function Card2({
           </h3>
 
           {/* logos */}
-          {/* logos */}
           <div className="flex items-center gap-6 mt-8">
             <img
               src="/360.png"
               alt="R360 and CURAPOD logos"
               className="h-8 object-contain"
             />
-</div>
-
+          </div>
         </div>
       )}
     </button>
