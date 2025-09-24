@@ -598,65 +598,70 @@ export default function Home() {
 
 
 
-     <section
-      className="relative z-10 w-full min-h-screen bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: "url('/colorcolor.png')" }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+   <section
+  className="relative z-10 w-full min-h-screen"
+  style={{
+    backgroundImage: "url('/slive4.svg')",
+    backgroundSize: "100% 100%",     // <-- force stretch to viewport edges
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content container (centered, constrained) */}
-      <div className="relative z-10 w-full px-6 py-20 text-center">
-        {/* Top Icon Pill */}
-        <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E]">
-            <img src="/blog-icon.png" alt="Blog Icon" className="w-6 h-6" />
-          </div>
-        </div>
-
-        {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-bold mb-3">
-          <span className="text-gray-300">Blog</span>
-          <span className="text-subtle-gradient">/Insights</span>
-        </h2>
-        <p className="text-gray-400 text-base md:text-lg mb-12">
-          Latest Insights in AI & Customer Experience
-        </p>
-
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition flex flex-col min-h-[600px]"
-            >
-              {/* Image Placeholder */}
-              <div className="w-full h-60 bg-white rounded-xl mb-6"></div>
-
-              {/* Title */}
-              <h3 className="text-lg font-semibold mb-3 text-white">
-                Lorem ipsum dolor sit amet,
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-300 text-sm flex-grow">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
-                mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-                mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
-              </p>
-
-              {/* Learn More */}
-              <a
-                href="#"
-                className="mt-4 inline-block text-sm text-white/80 hover:text-pink-400 transition"
-              >
-                Learn More →
-              </a>
-            </div>
-          ))}
-        </div>
+  {/* Content container (centered, constrained) */}
+  <div className="relative z-10 w-full py-20 text-center">
+    {/* Top Icon Pill */}
+    <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E]">
+        <img src="/blog-icon.png" alt="Blog Icon" className="w-6 h-6" />
       </div>
-    </section>
+    </div>
+
+    {/* Heading */}
+    <h2 className="text-3xl md:text-5xl font-bold mb-3">
+      <span className="text-gray-300">Blog</span>
+      <span className="text-subtle-gradient">/Insights</span>
+    </h2>
+    <p className="text-gray-400 text-base md:text-lg mb-12">
+      Latest Insights in AI & Customer Experience
+    </p>
+
+    {/* Blog Grid */}
+    <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[1, 2, 3].map((i) => (
+        <div
+          key={i}
+          className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition flex flex-col min-h-[600px]"
+        >
+          {/* Image Placeholder */}
+          <div className="w-full h-60 bg-white rounded-xl mb-6"></div>
+
+          {/* Title */}
+          <h3 className="text-lg font-semibold mb-3 text-white">
+            Lorem ipsum dolor sit amet,
+          </h3>
+
+          {/* Description */}
+          <p className="text-gray-300 text-sm flex-grow">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
+            mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+            mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
+          </p>
+
+          {/* Learn More */}
+          <a
+            href="#"
+            className="mt-4 inline-block text-sm text-white/80 hover:text-pink-400 transition"
+          >
+            Learn More →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
 
 {/* Footer section */}

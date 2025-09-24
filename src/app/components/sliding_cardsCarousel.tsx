@@ -3,7 +3,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, Variants } from "framer-motion";
-import Card2 from "./sliding_cards"; // adjust path if needed
+import Card2 from "./sliding_cards"; 
 import GlassyButton from "./GlassyButton";
 
 type Item = {
@@ -36,7 +36,7 @@ const data: Item[] = [
 
 export default function CardsCarousel() {
   const [active, setActive] = useState<number>(0);
-  const offsetSpacing = 520; // tweak for horizontal spacing
+  const offsetSpacing = 520;
 
   // keyboard nav
   const onKey = useCallback((e: KeyboardEvent) => {
@@ -49,7 +49,6 @@ export default function CardsCarousel() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
-  // Precompute layout values
   const positioned = useMemo(() => {
     const n = data.length;
     return data.map((item, idx) => {
@@ -61,18 +60,13 @@ export default function CardsCarousel() {
       const isActive = dist === 0;
       const zIndex = 50 - Math.abs(dist);
       const opacity = Math.abs(dist) > 2 ? 0 : 1;
-      return { item, idx, dist, offsetX, yOffset, isActive, zIndex, opacity };
+      return { item, idx, offsetX, yOffset, isActive, zIndex, opacity };
     });
   }, [active]);
 
-  // typed variants — use string easing to avoid TS complaints
   const containerVariants: Variants = {
     hidden: { opacity: 0, y: 12 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
@@ -94,66 +88,58 @@ export default function CardsCarousel() {
 
       {/* Carousel area */}
       <div className="relative w-full h-[520px]">
-        {positioned.map(({ item, idx, offsetX, yOffset, isActive, zIndex, opacity }) => {
-          // visual scale
-          const scale = isActive ? 1 : Math.max(0.78, 1 - Math.abs(offsetX) / 3000);
-
-          // explicit sizing — helps avoid overflow of content
-          const width = isActive ? 760 : 220;
-          const height = isActive ? 480 : 140;
-
-          return (
-            // Outer wrapper centers the element using translate(-50%,-50%)
-            <div
-              key={item.id}
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                zIndex,
-                pointerEvents: isActive ? "auto" : "none", // only active is interactive
-              }}
-            >
-              {/* Animate x/y/scale/opacity relative to the centered wrapper */}
-              <motion.div
-              key={item.id}
-              drag="x"                         // ✅ enable horizontal drag
-              dragConstraints={{ left: 0, right: 0 }} // prevents infinite dragging
+        {positioned.map(({ item, idx, offsetX, yOffset, isActive, zIndex, opacity }) => (
+          <div
+            key={item.id}
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex,
+              pointerEvents: "auto",
+            }}
+          >
+            <motion.div
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={(e, info) => {
-                // ✅ snap to closest card based on drag distance
                 if (info.offset.x < -100) {
-                  setActive((active + 1) % data.length);  // swipe left → next card
+                  setActive((active + 1) % data.length);
                 } else if (info.offset.x > 100) {
-                  setActive((active - 1 + data.length) % data.length); // swipe right → prev card
+                  setActive((active - 1 + data.length) % data.length);
                 }
               }}
-              onClick={() => setActive(idx)}   // ✅ click card → make active
+              onClick={() => setActive(idx)}
               animate={{
                 x: offsetX,
                 y: yOffset,
                 scale: isActive ? 1 : 0.85,
                 opacity,
+                width: isActive ? 760 : 220,
+                height: isActive ? 480 : 140,
               }}
+              whileHover={!isActive ? { scale: 0.92 } : {}}
               transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 24,
+                x: { type: "spring", stiffness: 160, damping: 30 },
+                y: { type: "spring", stiffness: 160, damping: 30 },
+                scale: { duration: 0.5, ease: "easeInOut" },
+                opacity: { duration: 0.4, ease: "easeOut" },
+                width: { duration: 0.6, ease: "easeInOut" },
+                height: { duration: 0.6, ease: "easeInOut" },
               }}
               className="flex items-center justify-center cursor-pointer"
-              style={{ width, height }}
             >
               <Card2
                 title={item.title}
                 subtitle={item.subtitle}
                 icon={<span className="text-lg">{item.icon}</span>}
                 isActive={isActive}
+                onClick={() => setActive(idx)}
               />
             </motion.div>
-
-            </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       {/* Dots */}
