@@ -4,6 +4,7 @@ import CardsGrid from "./components/CardsGrid";
 import Card1 from "./components/Card1";
 import CardsCarousel from "./components/sliding_cardsCarousel";
 import GlassyButton from "./components/GlassyButton";
+import NavBar from "./Sections/NavBar";
 
 
 
@@ -15,43 +16,13 @@ export default function Home() {
         className="relative z-10 min-h-screen flex flex-col items-center text-center px-6 bg-cover bg-center"
         style={{ backgroundImage: "url('/landing-bg-1.svg')" }}
       >
-        {/* NAVBAR */}
-        <header className="relative z-20 flex items-center w-full max-w-7xl mx-auto px-8 py-6">
-          {/* Logo (bigger + stick left) */}
-          <div className="flex-shrink-0">
-            <img src="/logo.svg" alt="Logo" className="h-16 w-auto" /> {/* increased size */}
-          </div>
-
-          {/* Nav Links (center pill, longer & bigger) */}
-          <nav
-            className="flex items-center gap-12 px-12 py-4 mx-auto
-              rounded-full
-              bg-gradient-to-r from-black/80 via-purple-800/40 to-black/80
-              backdrop-blur-xl
-              border border-white/10
-              shadow-[inset_1px_1px_2px_rgba(255,255,255,0.08),0_4px_25px_rgba(0,0,0,0.6)]"
-          >
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Home</a>
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Products</a>
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Services</a>
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">About Us</a>
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Blog</a>
-            <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Contact</a>
-          </nav>
-
-          {/* CTA Button (push far right) */}
-          <div className="flex-shrink-0 ml-auto">
-            <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
-              <GlassyButton>Get in Touch →</GlassyButton>
-            </div>
-          </div>
-        </header>
+        <NavBar />
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mt-20 px-4">
           {/* Heading */}
           <h1
-            className="mx-auto w-full max-w-[1200px] text-[48px] md:text-[64px] font-bold leading-[1.2] text-center"
+            className="mx-auto w-full max-w-[1200px] text-[48px] md:text-[64px] font-medium leading-[1.2] text-center"
             style={{
               background:
                 "radial-gradient(circle, rgba(230,230,230,1) 70%, rgba(150,150,150,0.4) 100%)",
@@ -134,7 +105,7 @@ export default function Home() {
 
           {/* Explore Services Button */}
           <div className="mt-6">
-                        <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
+            <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
               <GlassyButton>Explore Services →</GlassyButton>
             </div>
           </div>
@@ -298,7 +269,7 @@ export default function Home() {
                         transition transform duration-200 
                         hover:scale-105 hover:brightness-110"
             >
-                            <img
+              <img
                 src="/supercx-icon.svg"
                 alt="icon"
                 className="w-4 h-4"
@@ -356,18 +327,18 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-black/10" />
 
         {/* Content INSIDE the dome */}
-          <div className="relative max-w-6xl mx-auto text-center pt-[100px] md:pt-[140px] lg:pt-[120px]">
-            {/* pill */}
-            {/* pill as button */}
-              <div className="mx-auto w-fit mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-                <GlassyButton>
-                  <img
-                    src="/supercx-icon.svg"
-                    alt="icon"
-                    className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-                  />
-                  <span>Super Products</span>
-                </GlassyButton>
+        <div className="relative max-w-6xl mx-auto text-center pt-[100px] md:pt-[140px] lg:pt-[120px]">
+          {/* pill */}
+          {/* pill as button */}
+          <div className="mx-auto w-fit mb-4 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+            <GlassyButton>
+              <img
+                src="/supercx-icon.svg"
+                alt="icon"
+                className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+              />
+              <span>Super Products</span>
+            </GlassyButton>
           </div>
 
 
@@ -434,349 +405,340 @@ export default function Home() {
       <section className="relative z-10 py-20 px-6 bg-cover bg-top" style={{ backgroundImage: "url('/landing-bg-4.svg')" }}>
 
 
-          {/* Render your carousel component */}
-          <div className="mt-8">
-            <CardsCarousel />
-          </div>
+        {/* Render your carousel component */}
+        <div className="mt-8">
+          <CardsCarousel />
+        </div>
       </section>
 
-<section
-  className="relative min-h-[80vh] flex flex-col justify-center items-center px-6 bg-cover bg-center text-center"
-  style={{
-    backgroundImage: "url('/landing-bg-5.svg')",
-  }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/40" />
+      <section
+        className="relative min-h-[80vh] flex flex-col justify-center items-center px-6 bg-cover bg-center text-center"
+        style={{
+          backgroundImage: "url('/landing-bg-5.svg')",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
 
-  {/* Content */}
-  <div className="relative z-10 w-full px-8 -mt-16">
-    {/* Pill */}
-    <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-      <GlassyButton>
-        <img
-          src="/supercx-icon.svg"
-          alt="icon"
-          className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
-        />
-        <span>What Our Clients Say</span>
-      </GlassyButton>
-    </div>
-
-    <img
-      src="/semicolon.png"   // move your uploaded file into /public and rename if needed
-      alt="decorative element"
-      className="mx-auto mb-6 w-20 h-auto"   // adjust w-20 (width) as per Figma
-    />
-
-    {/* Heading (3 forced lines) */}
-      <h2 className="w-full text-3xl sm:text-4xl md:text-5xl font-bold leading-snug text-subtle-gradient max-w-none">
-        <span className="block">SuperCX transformed our customer support</span>
-        <span className="block">— response times cut from 12 hours</span>
-        <span className="block">to 1.5 hours.</span>
-      </h2>
-
-    {/* Attribution */}
-    <p className="mt-4 text-base md:text-lg text-gray-300">
-      CX Head, Retail Brand
-    </p>
-
-    {/* Pagination Dots */}
-    <div className="mt-8 flex justify-center gap-11">
-      {[...Array(5)].map((_, i) => (
-        <span
-          key={i}
-          className={`w-20 h-20 rounded-full ${
-            i === 2
-              ? "border-2 border-white"
-              : "bg-white/10"
-          }`}
-        ></span>
-      ))}
-    </div>
-  </div>
-
-
-</section>
-
-<section
-  className="relative z-10 py-20 px-6 bg-cover bg-center "
-  style={{ backgroundImage: "url('/landing-bg-6.svg')" }}
->
-  {/* Overlay for readability (optional) */}
-  <div className="absolute inset-0 bg-black/40" />
-
-  <div className="relative z-10 max-w-6xl mx-auto">
-
-
-    {/* Heading */}
-    <h2 className="text-3xl md:text-5xl font-bold mb-12">
-      <span className="text-gray-300">Solutions </span>
-      <span className="text-subtle-gradient">by Industry</span>
-    </h2>
-
-        {/* Pill */}
-      <div className="inline-flex items-center mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-        <GlassyButton>
-          <span>AI Solutions Tailored for Your Industry</span>
-        </GlassyButton>
-      </div>
-
-
-    {/* Grid */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-  {/* Card 1 */}
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition  h-[250px] w-[500px] flex flex-col">
-      <img src="/paddedLogo.png" alt="icon" className="w-12 h-12 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">E-Commerce</h3>
-      <p className="text-gray-300 text-sm">
-        Abandoned cart recovery, WhatsApp bots.
-      </p>
-    </div>
-
-    {/* Card 2 */}
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition h-[250px] w-[500px] flex flex-col">
-      <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">BFSI</h3>
-      <p className="text-gray-300 text-sm">
-        Secure, multilingual chatbots, voice banking.
-      </p>
-    </div>
-
-    {/* Card 3 */}
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition h-[250px] w-[500px] flex flex-col">
-      <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">Healthcare</h3>
-      <p className="text-gray-300 text-sm">
-        Appointment scheduling, telehealth bots.
-      </p>
-    </div>
-
-    {/* Card 4 */}
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transitionh-[250px] w-[500px] flex flex-col">
-      <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
-      <h3 className="text-xl font-semibold mb-2">SaaS</h3>
-      <p className="text-gray-300 text-sm">
-        Lead nurturing automation, helpdesk bots.
-      </p>
-    </div>
-  </div>
-
-  <div className="relative mt-36">
-  <img
-    src="/arch.png"
-    alt="decorative background"
-    className="mx-auto w-[95%] md:w-[90%] lg:w-[85%] max-w-[1800px] opacity-90"
-  />
-
-      {/* Content overlaid on top of it */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <img src="/supercx-icon.svg" alt="icon" className="w-8 h-8 mb-4" />
-        <h3 className="text-2xl md:text-4xl font-bold text-white">
-          Ready To Scale Smarter With AI?
-        </h3>
-        <p className="mt-3 text-gray-300 max-w-md">
-          Let’s transform your customer experience with SuperCX.
-        </p>
-
-        {/* Buttons */}
-        <div className="mt-6 flex gap-4">
-          <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-            <button className="px-5 py-2 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E] text-white text-sm font-medium hover:scale-105 hover:brightness-110 transition">
-              Contact Sales
-            </button>
+        {/* Content */}
+        <div className="relative z-10 w-full px-8 -mt-16">
+          {/* Pill */}
+          <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+            <GlassyButton>
+              <img
+                src="/supercx-icon.svg"
+                alt="icon"
+                className="w-4 h-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+              />
+              <span>What Our Clients Say</span>
+            </GlassyButton>
           </div>
-          <div className="rounded-full bg-gradient-to-r from-pink-500 to-red-500 p-[1px]">
-            <button className="px-5 py-2 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E] text-white text-sm font-medium hover:scale-105 hover:brightness-110 transition">
-              Book a Free Demo
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
+          <img
+            src="/semicolon.png"   // move your uploaded file into /public and rename if needed
+            alt="decorative element"
+            className="mx-auto mb-6 w-20 h-auto"   // adjust w-20 (width) as per Figma
+          />
 
+          {/* Heading (3 forced lines) */}
+          <h2 className="w-full text-3xl sm:text-4xl md:text-5xl font-bold leading-snug text-subtle-gradient max-w-none">
+            <span className="block">SuperCX transformed our customer support</span>
+            <span className="block">— response times cut from 12 hours</span>
+            <span className="block">to 1.5 hours.</span>
+          </h2>
 
-
-   <section
-  className="relative z-10 w-full min-h-screen"
-  style={{
-    backgroundImage: "url('/slive4.svg')",
-    backgroundSize: "100% 100%",     // <-- force stretch to viewport edges
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/40" />
-
-  {/* Content container (centered, constrained) */}
-  <div className="relative z-10 w-full py-20 text-center">
-    {/* Top Icon Pill */}
-    <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
-      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E]">
-        <img src="/blog-icon.png" alt="Blog Icon" className="w-6 h-6" />
-      </div>
-    </div>
-
-    {/* Heading */}
-    <h2 className="text-3xl md:text-5xl font-bold mb-3">
-      <span className="text-gray-300">Blog</span>
-      <span className="text-subtle-gradient">/Insights</span>
-    </h2>
-    <p className="text-gray-400 text-base md:text-lg mb-12">
-      Latest Insights in AI & Customer Experience
-    </p>
-
-    {/* Blog Grid */}
-    <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition flex flex-col min-h-[600px]"
-        >
-          {/* Image Placeholder */}
-          <div className="w-full h-60 bg-white rounded-xl mb-6"></div>
-
-          {/* Title */}
-          <h3 className="text-lg font-semibold mb-3 text-white">
-            Lorem ipsum dolor sit amet,
-          </h3>
-
-          {/* Description */}
-          <p className="text-gray-300 text-sm flex-grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
-            mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-            mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
+          {/* Attribution */}
+          <p className="mt-4 text-base md:text-lg text-gray-300">
+            CX Head, Retail Brand
           </p>
 
-          {/* Learn More */}
-          <a
-            href="#"
-            className="mt-4 inline-block text-sm text-white/80 hover:text-pink-400 transition"
-          >
-            Learn More →
-          </a>
+          {/* Pagination Dots */}
+          <div className="mt-8 flex justify-center gap-11">
+            {[...Array(5)].map((_, i) => (
+              <span
+                key={i}
+                className={`w-20 h-20 rounded-full ${i === 2
+                  ? "border-2 border-white"
+                  : "bg-white/10"
+                  }`}
+              ></span>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
 
 
-{/* Footer section */}
+      </section>
+
+      <section
+        className="relative z-10 py-20 px-6 bg-cover bg-center "
+        style={{ backgroundImage: "url('/landing-bg-6.svg')" }}
+      >
+        {/* Overlay for readability (optional) */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative z-10 max-w-6xl mx-auto">
 
 
-  <footer className="w-full bg-[#080716] text-gray-300">
-  {/* Top Row: Logo + Newsletter */}
-  <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row justify-between gap-12">
-    {/* Left side: Logo + tagline */}
-    <div>
-      <img src="/logo.svg" alt="SuperCX Logo" className="h-10 mb-4" />
-      <p className="text-sm md:text-base">
-        Get AI-powered CX trends in your inbox
-      </p>
-    </div>
+          {/* Heading */}
+          <h2 className="text-3xl md:text-5xl font-bold mb-12">
+            <span className="text-gray-300">Solutions </span>
+            <span className="text-subtle-gradient">by Industry</span>
+          </h2>
 
-    {/* Right side: Newsletter */}
-    <div className="max-w-md">
-      <h4 className="font-semibold mb-4">Newsletter</h4>
-      <p className="text-sm md:text-base mb-4">
-        Get AI-powered CX trends in your inbox
-      </p>
-      <form className="flex gap-3">
-        <input
-          type="email"
-          placeholder="Email address"
-          className="flex-1 rounded-full px-4 py-2 bg-black/40 border border-white/10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
-        />
-        <button
-          type="submit"
-          className="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white font-medium shadow hover:brightness-110 transition"
-        >
-          Subscribe
-        </button>
-      </form>
-    </div>
-  </div>
-
-  {/* Links Grid */}
-  <div className="max-w-7xl mx-auto px-6 pb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-    <div>
-      <h4 className="font-semibold mb-4">Company</h4>
-      <ul className="space-y-2 text-sm">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Products</h4>
-      <ul className="space-y-2 text-sm">
-        <li><a href="#">SuperCX</a></li>
-        <li><a href="#">SuperVoice</a></li>
-        <li><a href="#">SuperDesk</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Services</h4>
-      <ul className="space-y-2 text-sm">
-        <li><a href="#">AI Chatbots</a></li>
-        <li><a href="#">CRM Implementation</a></li>
-        <li><a href="#">Helpdesk Support</a></li>
-        <li><a href="#">Marketing Automation</a></li>
-        <li><a href="#">BPM Consulting</a></li>
-        <li><a href="#">Integration Services</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Solutions</h4>
-      <ul className="space-y-2 text-sm">
-        <li><a href="#">E-commerce</a></li>
-        <li><a href="#">BFSI</a></li>
-        <li><a href="#">Healthcare</a></li>
-        <li><a href="#">SaaS</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 className="font-semibold mb-4">Blogs</h4>
-      <ul className="space-y-2 text-sm">
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-        <li><a href="#">Lorem ipsum dolor</a></li>
-      </ul>
-    </div>
-  </div>
-
-  {/* Bottom Bar */}
-  <div className="border-t border-white/10">
-    <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-      {/* Social Icons */}
-      <div className="flex gap-4">
-        <a href="#"><img src="/Facebook.svg" alt="Facebook" className="w-5 h-5" /></a>
-        <a href="#"><img src="/Twitter.svg" alt="X" className="w-5 h-5" /></a>
-        <a href="#"><img src="/Instagram.svg" alt="Instagram" className="w-5 h-5" /></a>
-        <a href="#"><img src="/Linkedin.svg" alt="LinkedIn" className="w-5 h-5" /></a>
-      </div>
-
-      {/* Copyright */}
-      <p className="text-center">© 2025 SuperCX. All rights reserved.</p>
-
-      {/* Policy */}
-      <a href="#" className="hover:text-pink-400">Privacy & Cookie Policy</a>
-    </div>
-  </div>
-</footer>
+          {/* Pill */}
+          <div className="inline-flex items-center mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+            <GlassyButton>
+              <span>AI Solutions Tailored for Your Industry</span>
+            </GlassyButton>
+          </div>
 
 
-  
-  </div>
-</section>
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            {/* Card 1 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition  h-[250px] w-[500px] flex flex-col">
+              <img src="/paddedLogo.png" alt="icon" className="w-12 h-12 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">E-Commerce</h3>
+              <p className="text-gray-300 text-sm">
+                Abandoned cart recovery, WhatsApp bots.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition h-[250px] w-[500px] flex flex-col">
+              <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">BFSI</h3>
+              <p className="text-gray-300 text-sm">
+                Secure, multilingual chatbots, voice banking.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition h-[250px] w-[500px] flex flex-col">
+              <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Healthcare</h3>
+              <p className="text-gray-300 text-sm">
+                Appointment scheduling, telehealth bots.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transitionh-[250px] w-[500px] flex flex-col">
+              <img src="/paddedLogo.png" alt="icon" className="w-8 h-8 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">SaaS</h3>
+              <p className="text-gray-300 text-sm">
+                Lead nurturing automation, helpdesk bots.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative mt-36">
+            <img
+              src="/arch.png"
+              alt="decorative background"
+              className="mx-auto w-[95%] md:w-[90%] lg:w-[85%] max-w-[1800px] opacity-90"
+            />
+
+            {/* Content overlaid on top of it */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <img src="/supercx-icon.svg" alt="icon" className="w-8 h-8 mb-4" />
+              <h3 className="text-2xl md:text-4xl font-bold text-white">
+                Ready To Scale Smarter With AI?
+              </h3>
+              <p className="mt-3 text-gray-300 max-w-md">
+                Let’s transform your customer experience with SuperCX.
+              </p>
+
+              {/* Buttons */}
+              <div className="mt-6 flex gap-4">
+                <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+                  <button className="px-5 py-2 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E] text-white text-sm font-medium hover:scale-105 hover:brightness-110 transition">
+                    Contact Sales
+                  </button>
+                </div>
+                <div className="rounded-full bg-gradient-to-r from-pink-500 to-red-500 p-[1px]">
+                  <button className="px-5 py-2 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E] text-white text-sm font-medium hover:scale-105 hover:brightness-110 transition">
+                    Book a Free Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
 
-      
+          <section
+            className="relative z-10 w-full min-h-screen"
+            style={{
+              backgroundImage: "url('/slive4.svg')",
+              backgroundSize: "100% 100%",     // <-- force stretch to viewport edges
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40" />
+
+            {/* Content container (centered, constrained) */}
+            <div className="relative z-10 w-full py-20 text-center">
+              {/* Top Icon Pill */}
+              <div className="mx-auto w-fit mb-6 rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] p-[1px]">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-b from-[#10151D] to-[#1D1F1E]">
+                  <img src="/blog-icon.png" alt="Blog Icon" className="w-6 h-6" />
+                </div>
+              </div>
+
+              {/* Heading */}
+              <h2 className="text-3xl md:text-5xl font-bold mb-3">
+                <span className="text-gray-300">Blog</span>
+                <span className="text-subtle-gradient">/Insights</span>
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg mb-12">
+                Latest Insights in AI & Customer Experience
+              </p>
+
+              {/* Blog Grid */}
+              <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md shadow-md hover:bg-white/10 transition flex flex-col min-h-[600px]"
+                  >
+                    {/* Image Placeholder */}
+                    <div className="w-full h-60 bg-white rounded-xl mb-6"></div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-semibold mb-3 text-white">
+                      Lorem ipsum dolor sit amet,
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-300 text-sm flex-grow">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
+                      mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
+                      mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.
+                    </p>
+
+                    {/* Learn More */}
+                    <a
+                      href="#"
+                      className="mt-4 inline-block text-sm text-white/80 hover:text-pink-400 transition"
+                    >
+                      Learn More →
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+
+          {/* Footer section */}
+
+
+          <footer className="w-full bg-[#080716] text-gray-300">
+            {/* Top Row: Logo + Newsletter */}
+            <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row justify-between gap-12">
+              {/* Left side: Logo + tagline */}
+              <div>
+                <img src="/logo.svg" alt="SuperCX Logo" className="h-10 mb-4" />
+                <p className="text-sm md:text-base">
+                  Get AI-powered CX trends in your inbox
+                </p>
+              </div>
+
+              {/* Right side: Newsletter */}
+              <div className="max-w-md">
+                <h4 className="font-semibold mb-4">Newsletter</h4>
+                <p className="text-sm md:text-base mb-4">
+                  Get AI-powered CX trends in your inbox
+                </p>
+                <form className="flex gap-3">
+                  <input
+                    type="email"
+                    placeholder="Email address"
+                    className="flex-1 rounded-full px-4 py-2 bg-black/40 border border-white/10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  />
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white font-medium shadow hover:brightness-110 transition"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            {/* Links Grid */}
+            <div className="max-w-7xl mx-auto px-6 pb-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+              <div>
+                <h4 className="font-semibold mb-4">Company</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Products</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#">SuperCX</a></li>
+                  <li><a href="#">SuperVoice</a></li>
+                  <li><a href="#">SuperDesk</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Services</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#">AI Chatbots</a></li>
+                  <li><a href="#">CRM Implementation</a></li>
+                  <li><a href="#">Helpdesk Support</a></li>
+                  <li><a href="#">Marketing Automation</a></li>
+                  <li><a href="#">BPM Consulting</a></li>
+                  <li><a href="#">Integration Services</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Solutions</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#">E-commerce</a></li>
+                  <li><a href="#">BFSI</a></li>
+                  <li><a href="#">Healthcare</a></li>
+                  <li><a href="#">SaaS</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-4">Blogs</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#">Lorem ipsum dolor</a></li>
+                  <li><a href="#">Lorem ipsum dolor</a></li>
+                  <li><a href="#">Lorem ipsum dolor</a></li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="border-t border-white/10">
+              <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+                {/* Social Icons */}
+                <div className="flex gap-4">
+                  <a href="#"><img src="/Facebook.svg" alt="Facebook" className="w-5 h-5" /></a>
+                  <a href="#"><img src="/Twitter.svg" alt="X" className="w-5 h-5" /></a>
+                  <a href="#"><img src="/Instagram.svg" alt="Instagram" className="w-5 h-5" /></a>
+                  <a href="#"><img src="/Linkedin.svg" alt="LinkedIn" className="w-5 h-5" /></a>
+                </div>
+
+                {/* Copyright */}
+                <p className="text-center">© 2025 SuperCX. All rights reserved.</p>
+
+                {/* Policy */}
+                <a href="#" className="hover:text-pink-400">Privacy & Cookie Policy</a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
     </main>
   );
 }
