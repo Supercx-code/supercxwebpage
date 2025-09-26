@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react'
 import GlassyButton from '../components/GlassyButton';
+import { LuMoveRight } from 'react-icons/lu';
+import Image from 'next/image';
 
 interface NavItem {
     name: string;
@@ -35,28 +37,24 @@ const NavBar = () => {
 
     return (
         <header className="relative z-20 flex flex-row items-center w-full justify-between px-12 py-6">
-            <div className="flex-shrink-0">
-                <img src="/logo.svg" alt="Logo" className="h-full" /> {/* increased size */}
+            <div className="flex-shrink-0 relative h-16 w-52">
+                <Image fill src="/logo.svg" alt="Logo" className="h-full" />
             </div>
 
-            <div className="border-[3px] rounded-xl">
-                <nav className="px-8 py-4 flex flex-row gap-8 rounded-full bg-gradient-to-b from-[#181A2B75] via-[#18242B75] to-[#0D0D0E]">
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Home</a>
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Products</a>
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Services</a>
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">About Us</a>
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Blog</a>
-                    <a href="#" className="text-base font-medium text-white/90 hover:text-pink-400 transition">Contact</a>
+            <GlassyButton>
+                <nav className="relative px-8 py-4 flex flex-row gap-8 rounded-full bg-gradient-to-b from-[#431156] via-[#2f133b] to-[#0D0D0E]">
+                    {navItems.map((nav) => (
+                        <a key={nav.targetId} href={`#${nav.targetId}`} className="text-base font-medium text-white/90 hover:text-pink-400 transition">{nav.name}</a>
+                    ))}
                 </nav>
-            </div>
+            </GlassyButton>
 
-            <div className="flex-shrink-0" >
-                <div className="rounded-full">
-                    <button className="bg-gradient-to-b from-[#10151D] to-[#1D1F1E] px-6 py-3 rounded-full">
-                        Get in Touch →
-                    </button>
-                </div>
-            </div>
+            <GlassyButton>
+                <button className="bg-gradient-to-b from-[#110723] to-[#1a0f29] px-6 py-3 rounded-full group flex items-center gap-1">
+                    Get in Touch
+                    <LuMoveRight className="group-hover:translate-x-0.5 transition" />
+                </button>
+            </GlassyButton>
         </header>
     )
 }

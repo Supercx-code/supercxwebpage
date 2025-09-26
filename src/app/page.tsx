@@ -5,87 +5,24 @@ import Card1 from "./components/Card1";
 import CardsCarousel from "./components/sliding_cardsCarousel";
 import GlassyButton from "./components/GlassyButton";
 import NavBar from "./Sections/NavBar";
+import Hero from "./Sections/Hero";
+import TrustedBy from "./Sections/TrustedBy";
+import CloudyHeading from "./components/CloudyHeading";
 
 
 
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-black text-white overflow-hidden">
-      {/* HERO SECTION */}
       <section
         className="relative z-10 min-h-screen flex flex-col items-center text-center px-6 bg-cover bg-center"
         style={{ backgroundImage: "url('/landing-bg-1.svg')" }}
       >
         <NavBar />
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mt-20 px-4">
-          {/* Heading */}
-          <h1
-            className="mx-auto w-full max-w-[1200px] text-[48px] md:text-[64px] font-medium leading-[1.2] text-center"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(230,230,230,1) 70%, rgba(150,150,150,0.4) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Revolutionize Customer Experience with AI-Powered Solutions
-          </h1>
+        <Hero />
 
-
-          {/* Subheading */}
-          <p className="mt-6 text-base md:text-lg font-normal text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            From intelligent chatbots to CRM and marketing automation, SuperCX helps businesses
-            scale smarter, faster, and more efficiently.
-          </p>
-
-          {/* Buttons */}
-          <div className="mt-10 flex justify-center gap-6 flex-wrap">
-            <button
-              className="relative text-subtle-gradient font-medium
-                        after:content-[''] after:absolute after:left-0 after:-bottom-1
-                        after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-pink-400 after:to-purple-400
-                        after:transition-all after:duration-300 hover:after:w-full"
-            >
-              Book a Free Consultation
-            </button>
-
-
-            <div className="inline-block rounded-full p-[0.5px] bg-gradient-to-br from-white/25 via-white/10 to-transparent">
-              <button
-                className="btn-cta flex items-center gap-2"
-                type="button"
-                aria-label="Learn more about our products"
-              >
-                <span>Explore Our Products</span>
-                <span className="btn-arrow" aria-hidden="true">
-                  <img src="/streamline_diamond-2.svg" alt="" className="w-5 h-5" />
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Trusted By Section */}
-        <div className="mt-20 max-w-6xl mx-auto">
-          <h3
-            className="text-[36px] md:text-[48px] font-bold leading-[1.2] text-center mb-6
-                      bg-gradient-to-r from-[#ffffff] via-[#d2c6d6] to-[#b08acb]
-                      bg-clip-text text-transparent"
-          >
-            Trusted By
-          </h3>
-
-
-          <div className="flex justify-center">
-            <img
-              src="/trustedcompanies.png"
-              alt="Trusted By Companies"
-              className="w-full max-w-5xl rounded-2xl shadow-lg border border-white/10"
-            />
-          </div>
-        </div>
+        <TrustedBy />
       </section>
 
       {/* SERVICES SECTION */}
@@ -93,22 +30,21 @@ export default function Home() {
         className="relative z-10 py-20 px-6 bg-cover bg-top"
         style={{ backgroundImage: "url('/landing-bg-4.svg')" }}
       >
-        <div className="relative z-10 max-w-6xl mx-auto text-left">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            <span className="text-gray-300">Our </span>
-            <span className="text-subtle-gradient">Services</span>
-          </h2>
+        <div className="relative z-10 max-w-6xl mx-auto text-left space-y-3">
+          <CloudyHeading>
+            Our Services
+          </CloudyHeading>
 
-          <p className="mt-3 text-base md:text-lg text-gray-400 max-w-2xl">
+          <p className="text-base md:text-lg text-white">
             Deploy AI-powered chatbots to scale support.
           </p>
 
-          {/* Explore Services Button */}
-          <div className="mt-6">
-            <div className="rounded-full bg-gradient-to-br from-[#585867] via-[#3A3A3F] to-[#080D1C] w-fit p-[1px]">
-              <GlassyButton>Explore Services →</GlassyButton>
-            </div>
-          </div>
+          <GlassyButton>
+            <button className="bg-gradient-to-b from-[#110723] to-[#1a0f29] px-4 py-2.5 rounded-full group flex items-center gap-1">
+              Explore Services
+              <LuMoveRight className="group-hover:translate-x-0.5 transition" />
+            </button>
+          </GlassyButton>
         </div>
 
         {/* Service Cards Grid */}
