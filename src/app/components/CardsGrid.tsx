@@ -44,18 +44,27 @@ export default function CardsGrid() {
           <article
             key={c.id}
             className="relative rounded-2xl p-8 min-h-[300px] flex flex-col
-                       border border-white/10 backdrop-blur-md
-                       bg-gradient-to-b from-[rgba(12,12,20,0.25)] to-[rgba(17,13,35,0.18)]
-                       shadow-[inset_0_1px_0_rgba(255,255,255,0.02),0_12px_30px_rgba(3,6,12,0.45)]
+                       border border-white/15 backdrop-blur-md
+                       bg-gradient-to-b from-[rgba(20,20,40,0.55)] to-[rgba(15,10,25,0.45)]
+                       shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_12px_30px_rgba(3,6,12,0.55)]
                        hover:translate-y-[-6px] transition-transform duration-300"
           >
+            {/* 🔹 Top center glow highlight */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-2/5 h-[2px] rounded-full pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.15) 60%, transparent 100%)",
+              }}
+            />
+
             {/* Icon frame */}
-            <div className="mb-6">
+            <div className="mb-6 relative z-10">
               <div
                 className="relative inline-flex items-center justify-center w-11 h-11 rounded-lg p-1.5
-                           bg-gradient-to-b from-[rgba(255,255,255,0.04)] to-[rgba(20,20,28,0.25)]
-                           shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_6px_14px_rgba(3,6,12,0.35)]
-                           border border-white/10 backdrop-blur-sm"
+                           bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(20,20,28,0.35)]
+                           shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_6px_14px_rgba(3,6,12,0.45)]
+                           border border-white/15 backdrop-blur-sm"
               >
                 <Image
                   src={c.icon}
@@ -68,15 +77,15 @@ export default function CardsGrid() {
             </div>
 
             {/* Title & text */}
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 leading-tight">
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 leading-tight relative z-10">
               {c.title}
             </h3>
-            <p className="text-sm md:text-base text-white/70 max-w-[90%]">
+            <p className="text-sm md:text-base text-white/80 max-w-[90%] relative z-10">
               {c.desc}
             </p>
 
             {/* Divider line */}
-            <div className="absolute bottom-6 left-8 right-8 h-px bg-white/5" />
+            <div className="absolute bottom-6 left-8 right-8 h-px bg-white/10" />
           </article>
         ))}
       </div>
