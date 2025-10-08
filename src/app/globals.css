@@ -14,8 +14,8 @@
   border: 2px solid var(--hover-text);
   background: var(--hover-bg);
   transition: 0.2s;
-  border-radius: 2rem;
-  padding: 0.8em 1.5em;
+  /* border-radius: 2rem;
+  padding: 0.8em 1.5em; */
 }
 
 .custom-button:hover {
@@ -29,5 +29,4 @@
   transform: translate(0);
   box-shadow: none;
 }
-
 
