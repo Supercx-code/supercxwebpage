@@ -54,3 +54,18 @@
   transform: translate(0);
   box-shadow: none;
 }
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-to-left {
+  display: flex;
+  animation: moveLeft 40s linear infinite;
+  width: max-content;
+}
