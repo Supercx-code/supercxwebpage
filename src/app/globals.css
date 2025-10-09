@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* inspired form gumroad website */
-.custom-button {
-  --bg: #7300FF;
-  --hover-bg: #E1FF2D;
+.custom-yellow-button {
+  --bg: #7300ff;
+  --hover-bg: #e1ff2d;
   --hover-text: #000;
   color: #000;
   cursor: pointer;
+  font-weight: 500;
   border: 2px solid var(--hover-text);
   background: var(--hover-bg);
   transition: 0.2s;
@@ -18,15 +17,40 @@
   padding: 0.8em 1.5em; */
 }
 
-.custom-button:hover {
+.custom-yellow-button:hover {
   color: var(--hover-text);
   transform: translate(0.25rem, -0.25rem);
   background: var(--hover-bg);
   box-shadow: -0.25rem 0.25rem var(--bg);
 }
 
-.custom-button:active {
+.custom-yellow-button:active {
   transform: translate(0);
   box-shadow: none;
 }
 
+.custom-black-button {
+  --bg: #DB6C3D;
+  --hover-bg: #000000;
+  --hover-text: #fff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  border: 2px solid #000;
+  background: var(--hover-bg);
+  transition: 0.2s;
+  /* border-radius: 2rem;
+  padding: 0.8em 1.5em; */
+}
+
+.custom-black-button:hover {
+  color: var(--hover-text);
+  transform: translate(0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: -0.25rem 0.25rem var(--bg);
+}
+
+.custom-black-button:active {
+  transform: translate(0);
+  box-shadow: none;
+}
