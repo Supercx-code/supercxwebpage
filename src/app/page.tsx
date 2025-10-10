@@ -193,6 +193,7 @@ const HowWeWork = () => {
               src={image}
               alt={title}
               fill
+              className='pointer-events-none select-none'
             />
           </div>
 
@@ -327,7 +328,7 @@ const Reviews = () => {
                 src={"/reviews/qoute.svg"}
                 alt={"”"}
                 fill
-                className='p-2'
+                className='p-2 pointer-events-none select-none'
               />
             </div>
           </div>
@@ -391,6 +392,7 @@ const Solutions = () => {
                 src={image}
                 alt={title}
                 fill
+                className='pointer-events-none select-none'
               />
             </div>
 
