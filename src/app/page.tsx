@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { JSX } from 'react'
 import Image from 'next/image';
 import InfiniteMoving from '../../components/InfiniteMoving';
@@ -422,7 +423,7 @@ const ReadyToScale = () => {
       </div>
 
       <button className='text-white custom-black-button mt-auto text-xl font-medium w-fit rounded-full py-3 px-12'>
-        Let's Get Started
+        Let&apos;s Get Started
       </button>
     </div>
   )
