@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { JSX } from 'react'
+import React from 'react'
 import Image from 'next/image';
 import InfiniteMoving from '../../components/InfiniteMoving';
 import { IoStarSharp } from 'react-icons/io5';
@@ -35,7 +35,7 @@ const Page = () => {
   )
 };
 
-const HeroSection: any = () => {
+const HeroSection = () => {
   return (
     <div className='p-4 pr-0 rounded-2xl bg-[#EBE9E9]'>
       <div className="w-full flex flex-row items-start">
@@ -440,7 +440,7 @@ const ServicesCard = ({ image, title, description, backgroundColor }: { image: s
   )
 };
 
-const ProductsCard = ({ image, title, description }: { image: string; title: string; description: string; }) => {
+const ProductsCard = ({ title, description }: { image: string; title: string; description: string; }) => {
   return (
     <div className='bg-[#FFF0F1] border-2 border-black rounded-2xl p-6 flex flex-col gap-6 items-center text-center'>
       <div className="bg-white rounded-xl h-72 w-full">
