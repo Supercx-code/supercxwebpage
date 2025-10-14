@@ -13,7 +13,7 @@ const About = () => {
         Our Team
       </PageHeader>
 
-      <div className="grid grid-cols-3 gap-6 bg-[#EBE9E9] p-10 px-20 rounded-2xl justify-center">
+      <div className="grid grid-cols-3 gap-6 bg-[#EBE9E9] p-20 px-32 rounded-2xl justify-center">
         {[
           { name: "Lohit J", position: "Founder, CEO", img: "/ourteam/member1.jpg" },
           { name: "Nuthan", position: "CTO", img: "/ourteam/member1.jpg" },
@@ -34,7 +34,7 @@ const About = () => {
 const MemberCard = ({ name, position, img }: { name: string; position: string; img: string }) => {
 
   return (
-    <div className='flex-1 border-2 border-black bg-[#FFF0F1] shadow-[0rem_0.4rem_#000] rounded-3xl p-6'>
+    <div className='flex-1 border-2 border-black bg-[#FFF0F1] shadow-[0rem_0.4rem_#000] rounded-3xl p-4'>
 
       <div className="relative w-full h-80 border-2 border-black rounded-2xl mb-6">
         <Image
