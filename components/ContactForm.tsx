@@ -60,10 +60,17 @@ const ContactForm = () => {
         <div className="text-center pt-6">
           <button
             type="submit"
-            className="px-12 py-4 bg-black text-white text-lg rounded-full shadow-[-0.3rem_0.3rem_#000] hover:scale-105 transition-transform duration-200"
+            className="relative inline-block px-12 py-4 text-lg font-medium text-white bg-black border-2 border-black rounded-full
+                      transition-all duration-200 ease-in-out
+                      hover:-translate-y-[4px] hover:translate-x-[4px] 
+                      hover:shadow-[-4px_4px_0px_#FF7A00]"
           >
             Send Message
           </button>
+
+
+
+
         </div>
       </form>
     </div>
