@@ -2,7 +2,7 @@ import React from "react";
 import HeadingText from "../components/HeadingText";
 import BgImage from "../public/headerbg.svg";
 
-const PageHeader = ({ children }: { children: string }) => {
+const PageHeader = ({ children }: { children: React.ReactNode }) => {
     return (
         <div
             style={{
