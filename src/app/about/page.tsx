@@ -16,9 +16,10 @@ const About = () => {
       <div className="grid grid-cols-3 gap-6 bg-[#EBE9E9] p-20 px-32 rounded-2xl justify-center">
         {[
           { name: "Lohit J", position: "Founder, CEO", img: "/ourteam/member1.jpg" },
-          { name: "Nuthan", position: "CTO", img: "/ourteam/member1.jpg" },
+          // { name: "Nuthan", position: "CTO", img: "/ourteam/member1.jpg" },
           { name: "Neha", position: "CXO", img: "/ourteam/member1.jpg" },
           { name: "Harab Rasheed", position: "CMO", img: "/ourteam/member1.jpg" },
+          { name: "Pavanandan", position: "Developer", img: "/ourteam/member1.jpg" },
           { name: "Vlohit", position: "Developer", img: "/ourteam/member1.jpg" },
           { name: "Aditya", position: "Designer", img: "/ourteam/member1.jpg" },
         ].map((team, index) => (
