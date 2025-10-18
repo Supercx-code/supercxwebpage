@@ -51,13 +51,14 @@ const Services = () => {
 
       {/* --- Services Section --- */}
       <div className="bg-[#EBE9E9] border-2 border-black rounded-2xl py-16 md:p-24 lg:px-36 mx-auto my-16 flex flex-col justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-[#F9EDED] border border-black rounded-xl p-8 flex flex-col items-center text-center min-h-[450px]
-              shadow-[0_8px_0_#000] hover:shadow-[0_10px_20px_#000] transition-shadow duration-300"
-            >
+          <div
+            key={index}
+            className="bg-[#F9EDED] border border-black rounded-xl p-8 flex flex-col justify-between items-center text-center min-h-[400px] w-[380px]
+            shadow-[0_8px_0_#000] hover:shadow-[0_10px_20px_#000] transition-shadow duration-300"
+          >
+
               {/* icon */}
               <img
                 src={service.icon}
@@ -67,10 +68,10 @@ const Services = () => {
 
               {/* title + desc */}
               <div className="flex-grow flex flex-col justify-end">
-                <h3 className="text-lg font-bold text-[#111] mb-2">
+                <h3 className="text-2xl font-bold text-[#111] mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-[#333] mb-6 px-2 leading-snug">
+                <p className="text-base text-[#333] mb-6 px-2 leading-snug">
                   {service.description}
                 </p>
               </div>
@@ -78,7 +79,7 @@ const Services = () => {
               {/* button pinned at bottom */}
               <div className="w-full mt-auto mb-4">
                 <Link href={`/services/${service.slug}`}>
-                  <button className="w-full border border-black bg-[#F9EDED] px-4 py-2 rounded-md text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:bg-[#FF9D6C] hover:text-black">
+                  <button className="w-full border border-black bg-[#F9EDED] px-4 py-2 rounded-md text-base font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:bg-[#FF9D6C] hover:text-black">
                     Learn More <span className="text-base">→</span>
                   </button>
                 </Link>
