@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import { RiArrowRightLine } from 'react-icons/ri';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
@@ -10,9 +12,12 @@ const Footer = () => {
         {
             heading: "Company",
             links: [
-                { title: "About Us", link: "#", },
-                { title: "Careers", link: "#" },
-                { title: "Contact", link: "#" },
+                { title: "Products", link: "/about", },
+                { title: "Services", link: "/services", },
+                { title: "About Us", link: "/about", },
+                { title: "Blog", link: "/blog", },
+                // { title: "Careers", link: "#" },
+                { title: "Contact", link: "/contact" },
             ]
         },
         {
@@ -26,12 +31,12 @@ const Footer = () => {
         {
             heading: "Services",
             links: [
-                { title: "AI Chatbots", link: "#", },
-                { title: "CRM Implementation", link: "#" },
-                { title: "Helpdesk Support", link: "#" },
-                { title: "Marketing Automation", link: "#" },
-                { title: "BPM Consulting", link: "#" },
-                { title: "Integration Services", link: "#" },
+                { title: "AI Chatbots", link: "/services/ai-chatbots"},
+                { title: "CRM Implementation", link: "/services/crm-implementation" },
+                { title: "Helpdesk Support", link: "/services/helpdesk-support" },
+                { title: "Marketing Automation", link: "/services/marketing-automation" },
+                { title: "BPM Consulting", link: "/services/bpm-consulting" },
+                { title: "Integration Services", link: "/services/integration-services" },
             ]
         },
         {

@@ -230,7 +230,7 @@ const BlogsContainer = () => {
           <motion.div
             key={blog.id}
             className="bg-[#F9EDED] border-2 border-black rounded-xl overflow-hidden flex flex-col justify-between text-center transition-shadow duration-300
-                      shadow-[0_8px_0_#000] hover:shadow-[0_10px_20px_#000] min-h-[460px]"
+                      shadow-[0_8px_0_#000]  min-h-[460px]"
             style={{ width: "381.33px" }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -238,7 +238,7 @@ const BlogsContainer = () => {
           >
 
 
-            <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <motion.div  transition={{ duration: 0.3 }}>
               <div className="w-full flex items-center justify-center bg-[#F9EDED] px-4 pt-4">
                 <img
                   src={blog.image}
