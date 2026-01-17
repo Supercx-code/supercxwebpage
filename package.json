@@ -1,31 +1,37 @@
 {
-  "name": "supercx",
-  "version": "0.1.0",
+  "name": "supercx-website",
   "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "SuperCX - AI-Powered Customer Experience & Revenue Growth Platform",
+  "author": "SuperCX Team",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
-    "framer-motion": "^12.23.19",
-    "lucide-react": "^0.543.0",
-    "next": "15.5.2",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-icons": "^5.5.0"
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.26.2",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.562.0",
+    "next": "^15.3.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.2",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.18",
-    "typescript": "^5"
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
