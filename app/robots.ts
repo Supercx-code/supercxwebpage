@@ -8,22 +8,9 @@ export default function robots(): MetadataRoute.Robots {
                 allow: '/',
                 disallow: [
                     '/api/',
-                    '/_next/',
                     '/admin/',
                     '/private/',
-                    '/*.json$',
-                    '/search?*',
                 ],
-            },
-            {
-                userAgent: 'Googlebot',
-                allow: '/',
-                disallow: ['/api/', '/admin/'],
-            },
-            {
-                userAgent: 'Bingbot',
-                allow: '/',
-                disallow: ['/api/', '/admin/'],
             },
         ],
         sitemap: 'https://supercx.co/sitemap.xml',
