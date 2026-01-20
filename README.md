@@ -93,9 +93,6 @@ supercx.co/
 - `typescript` - Type safety
 - `tailwindcss` - Utility CSS
 
-## 📄 License
-
-MIT License - see [LICENSE](./LICENSE)
 
 ---
 
