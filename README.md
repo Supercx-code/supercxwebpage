@@ -93,6 +93,9 @@ supercx.co/
 - `typescript` - Type safety
 - `tailwindcss` - Utility CSS
 
+## 📞 Contact
+
+For inquiries or support, please reach out to the [SuperCX Team](mailto:support@supercx.co).
 
 ---
 
