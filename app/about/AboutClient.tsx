@@ -38,18 +38,16 @@ const stats = [
 ];
 
 const team = [
-    { name: 'CEO & Founder', role: 'Leadership', bio: 'Driving vision for AI-first customer experience transformation' },
-    { name: 'CTO', role: 'Technology', bio: 'Leading AI/ML innovation and platform architecture' },
-    { name: 'VP Engineering', role: 'Engineering', bio: 'Building scalable systems that power millions of conversations' },
-    { name: 'VP Customer Success', role: 'Customer Success', bio: 'Ensuring client success and driving adoption at enterprise scale' },
+    { name: 'Lohith J', role: 'Founder, CEO', bio: 'Driving vision for AI-first customer experience transformation' },
+    { name: 'Harab Rasheed', role: 'CMO', bio: 'Leading marketing strategy and brand growth initiatives' },
+    { name: 'Neha', role: 'Frontend Developer', bio: 'Crafting intuitive and beautiful user interfaces' },
+    { name: 'Vilohit K', role: 'Full Stack Developer', bio: 'Building scalable end-to-end solutions' },
+    { name: 'Smitesh Padnekar', role: 'Software Developer', bio: 'Developing robust software solutions' },
+    { name: 'Karan Soni', role: 'Software Developer', bio: 'Creating efficient and reliable code' },
+    { name: 'Shilpa Shree', role: 'Frontend Developer', bio: 'Designing responsive and engaging experiences' },
+    { name: 'Twinkle Tawar', role: 'Customer Success Manager', bio: 'Ensuring exceptional client experience and success' },
 ];
 
-const milestones = [
-    { year: '2020', title: 'Founded', description: 'SuperCX founded with a mission to democratize AI for customer experience.' },
-    { year: '2021', title: 'Series A', description: 'Raised $10M to accelerate product development and team growth.' },
-    { year: '2023', title: '100 Customers', description: 'Reached 100 enterprise customers across 4 continents.' },
-    { year: '2025', title: 'Voice AI Launch', description: 'Launched industry-leading Voice AI platform with multilingual support.' },
-];
 
 // JSON-LD Structured Data for About/Organization page
 const organizationJsonLd = {
@@ -76,10 +74,10 @@ const organizationJsonLd = {
     ],
     address: {
         '@type': 'PostalAddress',
-        streetAddress: '123 Tech Park, Whitefield',
+        streetAddress: 'HSR Layout',
         addressLocality: 'Bangalore',
         addressRegion: 'Karnataka',
-        postalCode: '560066',
+        postalCode: '560102',
         addressCountry: 'IN',
     },
     knowsAbout: [
@@ -248,44 +246,6 @@ export default function AboutClient() {
                 </div>
             </section>
 
-            {/* Timeline */}
-            <section className="py-24 border-t border-white/5" aria-labelledby="journey-heading">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 id="journey-heading" className="text-3xl md:text-4xl font-bold text-white mb-4">Our Journey</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Key milestones in our story.</p>
-                    </div>
-
-                    <div className="max-w-3xl mx-auto">
-                        <ol className="space-y-8" aria-label="Company milestones timeline">
-                            {milestones.map((milestone, index) => (
-                                <motion.li
-                                    key={milestone.year}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="flex gap-6"
-                                >
-                                    <div className="flex-shrink-0 w-20 text-right">
-                                        <time className="text-primary font-bold">{milestone.year}</time>
-                                    </div>
-                                    <div className="relative pb-8">
-                                        <div className="absolute left-0 top-2 w-3 h-3 rounded-full bg-primary" aria-hidden="true" />
-                                        {index < milestones.length - 1 && (
-                                            <div className="absolute left-1.5 top-5 w-px h-full bg-white/10" aria-hidden="true" />
-                                        )}
-                                        <div className="pl-8">
-                                            <h4 className="font-semibold text-white mb-1">{milestone.title}</h4>
-                                            <p className="text-sm text-gray-500">{milestone.description}</p>
-                                        </div>
-                                    </div>
-                                </motion.li>
-                            ))}
-                        </ol>
-                    </div>
-                </div>
-            </section>
 
             {/* CTA */}
             <section className="py-24" aria-labelledby="about-cta-heading">

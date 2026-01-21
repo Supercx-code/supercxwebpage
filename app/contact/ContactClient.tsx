@@ -4,23 +4,27 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import PageHero from '@/components/sections/PageHero';
 import { Button } from '@/components/ui/Button';
-import { Mail, Phone, MapPin, MessageSquare, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Clock, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { sendContactEmail } from '@/app/actions/contact';
+import { contactFormSchema, type ContactFormValues } from '@/lib/schemas';
 
 const contactMethods = [
     {
         icon: <Mail className="w-6 h-6" />,
         title: 'Email Us',
         description: 'Get a response within 24 hours',
-        value: 'hello@supercx.co',
-        href: 'mailto:hello@supercx.co',
+        value: 'Lohith@supercx.co',
+        href: 'mailto:Lohith@supercx.co',
     },
     {
         icon: <Phone className="w-6 h-6" />,
         title: 'Call Us',
         description: 'Mon-Fri, 9am-6pm IST',
-        value: '+91 80 4123 4567',
-        href: 'tel:+918041234567',
+        value: '+91 89700 81700',
+        href: 'tel:+918970081700',
     },
     {
         icon: <MessageSquare className="w-6 h-6" />,
@@ -35,14 +39,8 @@ const offices = [
     {
         city: 'Bangalore',
         country: 'India',
-        address: '123 Tech Park, Whitefield, Bangalore 560066',
+        address: 'HSR Layout, Bangalore 560102',
         type: 'Headquarters',
-    },
-    {
-        city: 'Mumbai',
-        country: 'India',
-        address: '456 Business Hub, Andheri East, Mumbai 400069',
-        type: 'Sales Office',
     },
 ];
 
@@ -63,16 +61,16 @@ const localBusinessJsonLd = {
     name: 'SuperCX',
     image: 'https://supercx.co/logo.png',
     url: 'https://supercx.co',
-    telephone: '+91-80-4123-4567',
-    email: 'hello@supercx.co',
+    telephone: '+91 89700 81700',
+    email: 'Lohith@supercx.co',
     description: 'AI-Powered Customer Experience Platform offering Voice AI, CRM Implementation, and Helpdesk Automation services.',
     priceRange: '$$',
     address: {
         '@type': 'PostalAddress',
-        streetAddress: '123 Tech Park, Whitefield',
+        streetAddress: 'HSR Layout',
         addressLocality: 'Bangalore',
         addressRegion: 'Karnataka',
-        postalCode: '560066',
+        postalCode: '560102',
         addressCountry: 'IN',
     },
     geo: {
@@ -91,16 +89,16 @@ const localBusinessJsonLd = {
     contactPoint: [
         {
             '@type': 'ContactPoint',
-            telephone: '+91-80-4123-4567',
+            telephone: '+91 89700 81700',
             contactType: 'sales',
-            email: 'hello@supercx.co',
+            email: 'Lohith@supercx.co',
             availableLanguage: ['English', 'Hindi'],
         },
         {
             '@type': 'ContactPoint',
-            telephone: '+91-80-4123-4567',
+            telephone: '+91 89700 81700',
             contactType: 'customer support',
-            email: 'support@supercx.co',
+            email: 'Lohith@supercx.co',
             availableLanguage: ['English', 'Hindi'],
         },
     ],
@@ -130,18 +128,43 @@ const breadcrumbJsonLd = {
 };
 
 export default function ContactClient() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        company: '',
-        department: 'sales',
-        message: '',
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm<ContactFormValues>({
+        resolver: zodResolver(contactFormSchema),
+        defaultValues: {
+            name: '',
+            email: '',
+            company: '',
+            department: 'sales',
+            message: '',
+        },
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log(formData);
+    const onSubmit = async (data: ContactFormValues) => {
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const result = await sendContactEmail(data);
+
+            if (result.success) {
+                setSubmitStatus({ success: true, message: result.message || 'Message sent successfully!' });
+                reset();
+            } else {
+                setSubmitStatus({ success: false, message: result.error || 'Something went wrong. Please try again.' });
+            }
+        } catch (error) {
+            setSubmitStatus({ success: false, message: 'An unexpected error occurred. Please try again.' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -198,33 +221,45 @@ export default function ContactClient() {
                             <h2 id="contact-form-heading" className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
                             <p className="text-gray-400 mb-8">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
 
-                            <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
+                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Contact form">
+                                {submitStatus && (
+                                    <div className={`p-4 rounded-lg flex items-start gap-3 ${submitStatus.success ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                                        }`}>
+                                        {submitStatus.success ? <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" /> : <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />}
+                                        <p>{submitStatus.message}</p>
+                                    </div>
+                                )}
+
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label htmlFor="contact-name" className="block text-sm font-medium text-gray-400 mb-2">Name *</label>
                                         <input
                                             id="contact-name"
                                             type="text"
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            {...register('name')}
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-white/10'
+                                                }`}
                                             placeholder="Your name"
                                             autoComplete="name"
                                         />
+                                        {errors.name && (
+                                            <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
+                                        )}
                                     </div>
                                     <div>
                                         <label htmlFor="contact-email" className="block text-sm font-medium text-gray-400 mb-2">Email *</label>
                                         <input
                                             id="contact-email"
                                             type="email"
-                                            required
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            {...register('email')}
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-white/10'
+                                                }`}
                                             placeholder="you@company.com"
                                             autoComplete="email"
                                         />
+                                        {errors.email && (
+                                            <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
+                                        )}
                                     </div>
                                 </div>
 
@@ -234,8 +269,7 @@ export default function ContactClient() {
                                         <input
                                             id="contact-company"
                                             type="text"
-                                            value={formData.company}
-                                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                            {...register('company')}
                                             className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
                                             placeholder="Your company"
                                             autoComplete="organization"
@@ -245,15 +279,17 @@ export default function ContactClient() {
                                         <label htmlFor="contact-department" className="block text-sm font-medium text-gray-400 mb-2">Department *</label>
                                         <select
                                             id="contact-department"
-                                            required
-                                            value={formData.department}
-                                            onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary transition-colors"
+                                            {...register('department')}
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white focus:outline-none focus:border-primary transition-colors ${errors.department ? 'border-red-500 focus:border-red-500' : 'border-white/10'
+                                                }`}
                                         >
                                             {departments.map((dept) => (
                                                 <option key={dept.value} value={dept.value}>{dept.label}</option>
                                             ))}
                                         </select>
+                                        {errors.department && (
+                                            <p className="mt-1 text-sm text-red-400">{errors.department.message}</p>
+                                        )}
                                     </div>
                                 </div>
 
@@ -261,17 +297,35 @@ export default function ContactClient() {
                                     <label htmlFor="contact-message" className="block text-sm font-medium text-gray-400 mb-2">Message *</label>
                                     <textarea
                                         id="contact-message"
-                                        required
                                         rows={5}
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors resize-none"
+                                        {...register('message')}
+                                        className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors resize-none ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-white/10'
+                                            }`}
                                         placeholder="Tell us how we can help..."
                                     />
+                                    {errors.message && (
+                                        <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
+                                    )}
                                 </div>
 
-                                <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto">
-                                    Send Message <Send className="w-4 h-4 ml-2" aria-hidden="true" />
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    size="lg"
+                                    className="w-full md:w-auto"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            Sending...
+                                            <Loader2 className="w-4 h-4 ml-2 animate-spin" aria-hidden="true" />
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Message
+                                            <Send className="w-4 h-4 ml-2" aria-hidden="true" />
+                                        </>
+                                    )}
                                 </Button>
                             </form>
                         </div>

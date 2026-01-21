@@ -102,8 +102,8 @@ const posts = [
         slug: 'ecommerce-cx-trends-2026',
     },
     {
-        title: 'Introducing SuperVoice: Our New AI Voice Platform',
-        excerpt: 'Announcing the launch of SuperVoice—human-like AI voice agents for your business.',
+        title: 'Introducing Voice AI: Our New AI Voice Platform',
+        excerpt: 'Announcing the launch of Voice AI—human-like AI voice agents for your business.',
         author: 'SuperCX Team',
         date: 'Dec 20, 2025',
         dateISO: '2025-12-20T10:00:00+05:30',

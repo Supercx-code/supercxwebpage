@@ -9,26 +9,21 @@ import { Mic, Headphones, Phone, ArrowRight, Zap, Globe, Shield, Clock } from 'l
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-    title: 'AI Products | Voice AI, Helpdesk & CRM Integration',
-    description: 'Explore SuperCX AI products: Voice AI for human-like phone conversations, SuperDesk for automated helpdesk support, and SuperVoice for seamless CRM telephony integration. Start free today.',
+    title: 'Products | Agentic AI Platform',
+    description: 'Explore SuperCX Agentic AI Platform: Voice AI, SuperCX Omni-channel Support, and AI Chatbots. Automate operations with intelligent agents.',
     keywords: [
-        'AI voice agents',
-        'voice AI platform',
-        'automated helpdesk',
-        'CRM telephony',
-        'AI customer service',
-        'multilingual voice bot',
-        'call center automation',
-        'AI phone system',
-        'helpdesk software',
-        'CRM integration platform',
+        'Agentic AI',
+        'Voice AI',
+        'Omni-channel Support',
+        'AI Agents',
+        'SuperCX',
     ],
     alternates: {
         canonical: 'https://supercx.co/products',
     },
     openGraph: {
-        title: 'SuperCX Products | AI-Powered CX Tools',
-        description: 'Voice AI, automated helpdesk, and CRM telephony solutions. Build your perfect customer experience stack.',
+        title: 'SuperCX Products | Agentic AI Platform',
+        description: 'Voice AI, Omni-channel Support, and AI Chatbots. The Agentic AI Platform for modern operations.',
         url: 'https://supercx.co/products',
         siteName: 'SuperCX',
         images: [
@@ -52,36 +47,36 @@ export const metadata: Metadata = {
 const products = [
     {
         title: 'Voice AI',
-        description: 'Human-like AI voice agents that handle thousands of concurrent calls. Multilingual support with <300ms latency for natural conversations.',
+        description: 'Unified Voice Operating System. Human-like AI voice agents for inbound & outbound calls. Includes CRM telephony integration.',
         icon: <Mic className="w-8 h-8" />,
         href: '/products/voice-ai',
         glowColor: 'blue' as const,
-        badge: 'New Core Product',
-        features: ['Multilingual (Hindi, Tamil, Telugu)', '<300ms Latency', 'Concurrent Call Handling'],
+        badge: 'Core Platform',
+        features: ['Human-like Voice Agents', 'CRM Telephony (Voice AI)', 'Multilingual Support'],
     },
     {
-        title: 'SuperDesk',
-        description: 'Automated helpdesk platform that scales with your team. Smart routing, auto-responses, and self-service portals for efficient support.',
+        title: 'SuperCX',
+        description: 'Omni-channel Support Operations Platform. Unified inbox, automated helpdesk, and performance analytics.',
         icon: <Headphones className="w-8 h-8" />,
-        href: '/products/superdesk',
+        href: '/products/supercx',
         glowColor: 'pink' as const,
-        features: ['Smart Ticket Routing', 'Auto-Response', 'Self-Service Portal'],
+        features: ['Unified Support Inbox', 'Performance Metrics', 'Smart Routing & Automation'],
     },
     {
-        title: 'SuperVoice',
-        description: 'CRM telephony integration for seamless sales and support calls. Click-to-call, call recording, and real-time analytics.',
-        icon: <Phone className="w-8 h-8" />,
-        href: '/products/supervoice',
-        glowColor: 'coral' as const,
-        features: ['Click-to-Call', 'Call Recording', 'CRM Sync'],
-    },
+        title: 'AI Chatbot',
+        description: 'Intelligent conversational agents for website and messaging apps. 24/7 automated support.',
+        icon: <Zap className="w-8 h-8" />,
+        href: '/products/ai-chatbot',
+        glowColor: 'cyan' as const,
+        features: ['24/7 Availability', 'Instant Responses', 'Seamless Handoff'],
+    }
 ];
 
 const highlights = [
-    { icon: <Zap className="w-6 h-6" />, title: 'Lightning Fast', description: 'Sub-300ms response times' },
-    { icon: <Globe className="w-6 h-6" />, title: 'Multilingual', description: '10+ languages supported' },
-    { icon: <Shield className="w-6 h-6" />, title: 'Enterprise Security', description: 'SOC2 & GDPR compliant' },
-    { icon: <Clock className="w-6 h-6" />, title: '24/7 Availability', description: 'Always-on AI support' },
+    { icon: <Zap className="w-6 h-6" />, title: 'Agentic AI', description: 'Autonomous agents that act' },
+    { icon: <Globe className="w-6 h-6" />, title: 'Omni-channel', description: 'Voice, Chat, Email, Social' },
+    { icon: <Shield className="w-6 h-6" />, title: 'Enterprise Secure', description: 'SOC2 & GDPR ready' },
+    { icon: <Clock className="w-6 h-6" />, title: 'Real-time Metrics', description: 'Live performance tracking' },
 ];
 
 // JSON-LD Structured Data for Products
@@ -89,7 +84,7 @@ const productsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'SuperCX Products',
-    description: 'AI-powered customer experience products including Voice AI, Helpdesk Automation, and CRM Telephony.',
+    description: 'Agentic AI Platform including Voice AI, SuperCX Omni-channel Support, and AI Chatbots.',
     numberOfItems: 3,
     itemListElement: [
         {
@@ -98,7 +93,7 @@ const productsJsonLd = {
             item: {
                 '@type': 'SoftwareApplication',
                 name: 'SuperCX Voice AI',
-                description: 'Human-like AI voice agents with multilingual support and <300ms latency.',
+                description: 'Unified Voice Operating System with human-like AI agents and CRM telephony.',
                 applicationCategory: 'BusinessApplication',
                 operatingSystem: 'Web',
                 url: 'https://supercx.co/products/voice-ai',
@@ -107,11 +102,6 @@ const productsJsonLd = {
                     price: '0',
                     priceCurrency: 'USD',
                 },
-                aggregateRating: {
-                    '@type': 'AggregateRating',
-                    ratingValue: '4.9',
-                    ratingCount: '89',
-                },
             },
         },
         {
@@ -119,11 +109,11 @@ const productsJsonLd = {
             position: 2,
             item: {
                 '@type': 'SoftwareApplication',
-                name: 'SuperDesk',
-                description: 'Automated helpdesk platform with smart routing and self-service portals.',
+                name: 'SuperCX',
+                description: 'Omni-channel support operations platform with unified inbox and analytics.',
                 applicationCategory: 'BusinessApplication',
                 operatingSystem: 'Web',
-                url: 'https://supercx.co/products/superdesk',
+                url: 'https://supercx.co/products/supercx',
                 offers: {
                     '@type': 'Offer',
                     price: '0',
@@ -136,11 +126,11 @@ const productsJsonLd = {
             position: 3,
             item: {
                 '@type': 'SoftwareApplication',
-                name: 'SuperVoice',
-                description: 'CRM telephony integration with click-to-call and real-time analytics.',
+                name: 'SuperCX AI Chatbot',
+                description: 'Intelligent conversational agents for automated support.',
                 applicationCategory: 'BusinessApplication',
                 operatingSystem: 'Web',
-                url: 'https://supercx.co/products/supervoice',
+                url: 'https://supercx.co/products/ai-chatbot',
                 offers: {
                     '@type': 'Offer',
                     price: '0',

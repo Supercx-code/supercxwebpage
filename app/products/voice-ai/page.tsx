@@ -36,6 +36,11 @@ const features = [
         description: 'Deploy across phone, WhatsApp, web chat, and mobile apps with unified conversation history.',
     },
     {
+        icon: <Phone className="w-6 h-6" />,
+        title: 'Enterprise CRM Telephony',
+        description: 'Complete Supervoice capabilities: Click-to-call, call recording, and seamless CRM syncing for your sales floor.',
+    },
+    {
         icon: <BarChart3 className="w-6 h-6" />,
         title: 'Real-time Analytics',
         description: 'Live dashboards with sentiment analysis, call quality metrics, and conversion tracking.',
@@ -64,9 +69,9 @@ export default function VoiceAIPage() {
             <Navbar />
 
             <PageHero
-                badge="Core Product"
-                title="Voice AI That Sounds Human"
-                subtitle="Natural, multilingual AI voice agents that handle thousands of concurrent calls with sub-300ms latency. Transform your customer interactions at scale."
+                badge="Agentic Voice Platform"
+                title="Unified Voice Intelligence"
+                subtitle="The complete Voice Operating System. Native AI agents for human-like conversations + Enterprise-grade CRM telephony for your human team. One platform, infinite scale."
                 gradient="blue"
             />
 

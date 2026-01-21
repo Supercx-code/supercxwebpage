@@ -95,7 +95,7 @@ supercx.co/
 
 ## 📞 Contact
 
-For inquiries or support, please reach out to the [SuperCX Team](mailto:support@supercx.co).
+For inquiries or support, please reach out to the [SuperCX Team](mailto:Lohith@supercx.co).
 
 ---
 

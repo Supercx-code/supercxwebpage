@@ -63,8 +63,8 @@ export default function CRMImplementationPage() {
 
             <PageHero
                 badge="CRM Services"
-                title="CRM Implementation"
-                subtitle="End-to-end CRM deployment that transforms your sales and marketing operations. Expert implementation of Salesforce, Leadsquared, SAP, and more."
+                title="CRM Implementation for Sales"
+                subtitle="End-to-end CRM deployment that transforms your sales operations. Expert implementation of Salesforce, Leadsquared, SAP, and more."
                 gradient="gold"
             />
 

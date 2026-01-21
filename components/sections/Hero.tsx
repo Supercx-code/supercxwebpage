@@ -54,12 +54,12 @@ const Hero = () => {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row items-center lg:justify-start justify-center space-y-4 sm:space-y-0 sm:space-x-4 px-4 sm:px-0"
                         >
-                            <LinkButton href="/products/supervoice" variant="primary" size="lg" className="w-full sm:w-auto group">
-                                Meet SuperVoice
+                            <LinkButton href="/products/voice-ai" variant="primary" size="lg" className="w-full sm:w-auto group">
+                                Explore Voice AI
                                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                             </LinkButton>
                             <LinkButton href="/services" variant="outline" size="lg" className="w-full sm:w-auto">
-                                Enterprise Services
+                                Our Services
                             </LinkButton>
                         </motion.div>
                     </motion.div>

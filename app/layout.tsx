@@ -158,25 +158,24 @@ const organizationJsonLd = {
     foundingDate: '2020',
     slogan: 'Drive Revenue Growth with Data-Backed Customer Engagement',
     sameAs: [
-        'https://twitter.com/supercx',
+        'https://www.instagram.com/supercxco/',
         'https://linkedin.com/company/supercx',
-        'https://facebook.com/supercx',
     ],
     contactPoint: [
         {
             '@type': 'ContactPoint',
-            telephone: '+91-80-4123-4567',
+            telephone: '+91 89700 81700',
             contactType: 'sales',
-            email: 'hello@supercx.co',
+            email: 'Lohith@supercx.co',
             availableLanguage: ['English', 'Hindi'],
             areaServed: ['IN', 'US', 'GB', 'AE'],
             contactOption: 'TollFree',
         },
         {
             '@type': 'ContactPoint',
-            telephone: '+91-80-4123-4567',
+            telephone: '+91 89700 81700',
             contactType: 'customer support',
-            email: 'support@supercx.co',
+            email: 'Lohith@supercx.co',
             availableLanguage: ['English', 'Hindi'],
             hoursAvailable: {
                 '@type': 'OpeningHoursSpecification',
@@ -188,10 +187,10 @@ const organizationJsonLd = {
     ],
     address: {
         '@type': 'PostalAddress',
-        streetAddress: '123 Tech Park, Whitefield',
+        streetAddress: 'HSR Layout',
         addressLocality: 'Bangalore',
         addressRegion: 'Karnataka',
-        postalCode: '560066',
+        postalCode: '560102',
         addressCountry: 'IN',
     },
     areaServed: [
@@ -254,7 +253,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={plusJakarta.variable}>
+        <html lang="en" className={plusJakarta.variable} suppressHydrationWarning>
             <head>
                 {/* Preconnect to external resources */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -289,7 +288,7 @@ export default function RootLayout({
                 <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
                 <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
             </head>
-            <body className="bg-background text-gray-200 font-sans antialiased overflow-x-hidden">
+            <body className="bg-background text-gray-200 font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
                 {children}
             </body>
         </html>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Contact Us | Get in Touch with SuperCX',
-    description: 'Contact SuperCX for demos, sales inquiries, or support. Email hello@supercx.co or call +91 80 4123 4567. Offices in Bangalore and Mumbai, India.',
+    description: 'Contact SuperCX for demos, sales inquiries, or support. Email Lohith@supercx.co or call +91 89700 81700. Offices in Bangalore and Mumbai, India.',
     keywords: [
         'contact SuperCX',
         'SuperCX demo',
