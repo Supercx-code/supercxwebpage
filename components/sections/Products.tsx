@@ -8,21 +8,15 @@ import { motion } from 'framer-motion';
 const products = [
     {
         title: 'SuperCX',
-        description: 'AI-driven chatbots transforming customer engagement with instant, 24/7 support that improves efficiency and customer satisfaction.',
+        description: 'The unified omni-channel platform. SuperDesk for seamless support operations, CRM integration for sales operations—all in one powerful experience.',
         glowColor: 'bg-secondary',
-        href: '/products/voice-ai',
+        href: '/products/supercx',
     },
     {
-        title: 'SuperVoice',
-        description: 'Deployment of major CRM systems like Leadsquared, Salesforce, and SAP to streamline sales, marketing, and customer service operations.',
+        title: 'Voice AI',
+        description: 'AI-powered voice platform with human-like voice agents for inbound & outbound calls. Enterprise-grade CRM telephony integration for your sales and support teams.',
         glowColor: 'bg-primary',
-        href: '/products/supervoice',
-    },
-    {
-        title: 'SuperDesk',
-        description: 'Freshdesk, Zendesk, and Kapture CX implementation to streamline support operations by consolidating communication channels.',
-        glowColor: 'bg-highlight',
-        href: '/products/superdesk',
+        href: '/products/voice-ai',
     },
 ];
 
@@ -42,7 +36,7 @@ const Products = () => {
                     </LinkButton>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {products.map((product) => (
                         <Link key={product.title} href={product.href}>
                             <motion.div

@@ -6,7 +6,11 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: '*',
                 allow: '/',
-                disallow: ['/api/', '/_next/', '/admin/'],
+                disallow: [
+                    '/api/',
+                    '/admin/',
+                    '/private/',
+                ],
             },
         ],
         sitemap: 'https://supercx.co/sitemap.xml',

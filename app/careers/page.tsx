@@ -18,44 +18,6 @@ const benefits = [
     { icon: <Users className="w-6 h-6" />, title: 'Parental Leave', description: '6 months paid leave for primary caregivers' },
 ];
 
-const openRoles = [
-    {
-        title: 'Senior Software Engineer - Backend',
-        department: 'Engineering',
-        location: 'Bangalore / Remote',
-        type: 'Full-time',
-    },
-    {
-        title: 'Product Designer',
-        department: 'Design',
-        location: 'Bangalore / Remote',
-        type: 'Full-time',
-    },
-    {
-        title: 'ML Engineer - Voice AI',
-        department: 'AI/ML',
-        location: 'Bangalore',
-        type: 'Full-time',
-    },
-    {
-        title: 'Customer Success Manager',
-        department: 'Customer Success',
-        location: 'Mumbai / Remote',
-        type: 'Full-time',
-    },
-    {
-        title: 'Technical Writer',
-        department: 'Product',
-        location: 'Remote',
-        type: 'Full-time',
-    },
-    {
-        title: 'Sales Development Representative',
-        department: 'Sales',
-        location: 'Bangalore / Mumbai',
-        type: 'Full-time',
-    },
-];
 
 const values = [
     'We ship fast and iterate based on feedback',
@@ -147,49 +109,6 @@ export default function CareersPage() {
                 </div>
             </section>
 
-            {/* Open Roles */}
-            <section className="py-24 border-t border-white/5">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Open Positions</h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">Find your next opportunity at SuperCX.</p>
-                    </div>
-
-                    <div className="max-w-4xl mx-auto space-y-4">
-                        {openRoles.map((role) => (
-                            <div key={role.title} className="p-6 bg-[#161b22] border border-white/10 rounded-xl hover:border-primary/30 transition-colors group cursor-pointer">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                                    <div>
-                                        <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors">{role.title}</h3>
-                                        <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-gray-500">
-                                            <span className="flex items-center gap-1">
-                                                <Briefcase className="w-4 h-4" />
-                                                {role.department}
-                                            </span>
-                                            <span className="flex items-center gap-1">
-                                                <MapPin className="w-4 h-4" />
-                                                {role.location}
-                                            </span>
-                                            <span className="flex items-center gap-1">
-                                                <Clock className="w-4 h-4" />
-                                                {role.type}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <LinkButton href="/contact" variant="outline" className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-                                        Apply <ArrowRight className="w-4 h-4 ml-2" />
-                                    </LinkButton>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-center mt-12">
-                        <p className="text-gray-500 mb-4">Don&apos;t see a role that fits? We&apos;re always looking for great talent.</p>
-                        <LinkButton href="/contact" variant="outline">Send General Application</LinkButton>
-                    </div>
-                </div>
-            </section>
 
             {/* CTA */}
             <section className="py-24">
@@ -198,7 +117,7 @@ export default function CareersPage() {
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Make an Impact?</h2>
                         <p className="text-gray-400 mb-8 max-w-xl mx-auto">Join us in transforming how businesses connect with their customers.</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <LinkButton href="#open-roles" variant="primary" size="lg">View All Openings</LinkButton>
+                            <LinkButton href="/contact" variant="primary" size="lg">Get in Touch</LinkButton>
                             <LinkButton href="/about" variant="outline" size="lg">Learn About Our Culture</LinkButton>
                         </div>
                     </div>

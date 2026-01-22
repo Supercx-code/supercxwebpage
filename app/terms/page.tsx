@@ -112,10 +112,10 @@ export default function TermsPage() {
                                 If you have any questions about these Terms of Service, please contact our legal team.
                             </p>
                             <a
-                                href="mailto:legal@supercx.co"
+                                href="mailto:Lohith@supercx.co"
                                 className="text-primary hover:underline font-medium"
                             >
-                                legal@supercx.co
+                                Lohith@supercx.co
                             </a>
                         </div>
                     </div>

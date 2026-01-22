@@ -1,11 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-const brands = [
-    'Divine Heal', 'Marabha Hajj', '360', 'Curapod', 'WF',
-    'Divine Heal', 'Marabha Hajj', '360', 'Curapod', 'WF', // Duplicated for loop
-];
+import Image from 'next/image';
 
 const SocialProof = () => {
     return (
@@ -15,33 +11,41 @@ const SocialProof = () => {
                     Trusted by Innovative Organizations
                 </p>
 
-                <div className="relative w-full overflow-hidden mask-gradient-x">
+                <div className="relative w-full overflow-hidden">
                     {/* Gradient Masks for fade effect at edges */}
                     <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0B0F19] to-transparent z-10"></div>
                     <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0B0F19] to-transparent z-10"></div>
 
                     <motion.div
-                        className="flex items-center gap-12 md:gap-20 whitespace-nowrap"
+                        className="flex items-center gap-8 whitespace-nowrap"
                         animate={{
-                            x: [0, -1000], // Adjust based on width of items
+                            x: [0, -900],
                         }}
                         transition={{
                             x: {
                                 repeat: Infinity,
                                 repeatType: "loop",
-                                duration: 30,
+                                duration: 20,
                                 ease: "linear",
                             },
                         }}
                     >
-                        {brands.map((brand, index) => (
-                            <div
-                                key={`${brand}-${index}`}
-                                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-200 to-gray-500 opacity-80 grayscale-0 hover:from-primary hover:to-secondary cursor-default select-none transition-all duration-300"
-                            >
-                                {brand}
-                            </div>
-                        ))}
+                        {/* Duplicate images for seamless loop */}
+                        <Image
+                            src="/organizations.png"
+                            alt="Trusted Organizations"
+                            width={900}
+                            height={60}
+                            className="invert opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
+                            priority
+                        />
+                        <Image
+                            src="/organizations.png"
+                            alt="Trusted Organizations"
+                            width={900}
+                            height={60}
+                            className="invert opacity-70 hover:opacity-100 transition-opacity flex-shrink-0"
+                        />
                     </motion.div>
                 </div>
             </div>

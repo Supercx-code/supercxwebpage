@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { LinkButton } from '@/components/ui/LinkButton';
-import { Send, Twitter, Linkedin, Sparkles, Mail, Phone } from 'lucide-react';
+import { Send, Instagram, Linkedin, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
 const Footer = () => {
@@ -28,8 +28,8 @@ const Footer = () => {
         ],
         products: [
             { label: 'Voice AI', href: '/products/voice-ai' },
-            { label: 'SuperVoice', href: '/products/supervoice' },
-            { label: 'SuperDesk', href: '/products/superdesk' },
+            { label: 'SuperCX', href: '/products/supercx' },
+            { label: 'AI Chatbot', href: '/products/ai-chatbot' },
         ],
         resources: [
             { label: 'Case Studies', href: '/case-studies' },
@@ -44,9 +44,9 @@ const Footer = () => {
 
     const socialLinks = [
         {
-            icon: <Twitter className="w-5 h-5" />,
-            href: 'https://twitter.com/supercx',
-            label: 'Twitter'
+            icon: <Instagram className="w-5 h-5" />,
+            href: 'https://www.instagram.com/supercxco/',
+            label: 'Instagram'
         },
         {
             icon: <Linkedin className="w-5 h-5" />,
@@ -105,16 +105,30 @@ const Footer = () => {
                     <div>
                         <h3 className="text-white font-semibold mb-4 sm:mb-6 text-sm uppercase tracking-wider">Products</h3>
                         <ul className="space-y-3 sm:space-y-4">
-                            {footerLinks.products.map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-gray-400 hover:text-primary transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
+                            <li>
+                                <Link
+                                    href="/products/voice-ai"
+                                    className="text-gray-400 hover:text-primary transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                                >
+                                    Voice AI
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/products/supercx"
+                                    className="text-gray-400 hover:text-primary transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                                >
+                                    SuperCX
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href="/products/ai-chatbot"
+                                    className="text-gray-400 hover:text-primary transition-colors text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                                >
+                                    AI Chatbot
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -159,19 +173,23 @@ const Footer = () => {
                         {/* Contact Info */}
                         <div className="space-y-3 mb-6">
                             <a
-                                href="mailto:hello@supercx.co"
+                                href="mailto:Lohith@supercx.co"
                                 className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors text-sm"
                             >
                                 <Mail className="w-4 h-4" aria-hidden="true" />
-                                hello@supercx.co
+                                Lohith@supercx.co
                             </a>
                             <a
-                                href="tel:+918041234567"
+                                href="tel:+918970081700"
                                 className="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors text-sm"
                             >
                                 <Phone className="w-4 h-4" aria-hidden="true" />
-                                +91 80 4123 4567
+                                +91 89700 81700
                             </a>
+                            <div className="flex items-center gap-2 text-gray-400 text-sm">
+                                <MapPin className="w-4 h-4" aria-hidden="true" />
+                                HSR Layout, Bangalore
+                            </div>
                         </div>
 
                         {/* Social Links */}
@@ -195,21 +213,8 @@ const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="border-t border-white/5 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
                     <div className="flex items-center gap-2">
-                        <img src="/logo.png" alt="" className="w-6 h-6 rounded" aria-hidden="true" />
+                        <img src="/logo.png" alt="SuperCX" className="h-8 sm:h-10 w-[110px] sm:w-[130px] object-cover opacity-70" />
                         <p>© {new Date().getFullYear()} SuperCX. All rights reserved.</p>
-                    </div>
-                    <div className="flex items-center gap-1 text-xs">
-                        <Sparkles className="w-3 h-3" aria-hidden="true" />
-                        <span>Powered by{' '}
-                            <a
-                                href="https://saasiple.in"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                            >
-                                Saasiple
-                            </a>
-                        </span>
                     </div>
                 </div>
             </div>

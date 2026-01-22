@@ -104,10 +104,10 @@ export default function PrivacyPage() {
                                 If you have any questions about this Privacy Policy or our data practices, please contact us.
                             </p>
                             <a
-                                href="mailto:privacy@supercx.co"
+                                href="mailto:Lohith@supercx.co"
                                 className="text-primary hover:underline font-medium"
                             >
-                                privacy@supercx.co
+                                Lohith@supercx.co
                             </a>
                         </div>
                     </div>

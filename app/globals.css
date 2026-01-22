@@ -75,3 +75,18 @@ body {
         @apply bg-white/5 backdrop-blur-lg border border-white/10;
     }
 }
+
+/* Animated gradient for Get Started button */
+@keyframes gradient-x {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s ease infinite;
+}
