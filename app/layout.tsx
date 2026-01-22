@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     },
     category: 'technology',
     verification: {
-        google: 'google-site-verification-code', // Replace with actual code
+        google: 'pFk5x53VBs24bHeaZF8dZ3EZw_je0v5Gsl2DFt7R-tU',
         // yandex: 'yandex-verification-code',
         // yahoo: 'yahoo-verification-code',
     },
@@ -284,9 +284,6 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-title" content="SuperCX" />
                 <meta name="mobile-web-app-capable" content="yes" />
 
-                {/* Security headers */}
-                <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-                <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
             </head>
             <body className="bg-background text-gray-200 font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
                 {children}
