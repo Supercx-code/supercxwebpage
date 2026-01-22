@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     },
     category: 'technology',
     verification: {
-        google: 'google-site-verification-code', // Replace with actual code
+        google: 'pFk5x53VBs24bHeaZF8dZ3EZw_je0v5Gsl2DFt7R-tU',
         // yandex: 'yandex-verification-code',
         // yahoo: 'yahoo-verification-code',
     },
