@@ -284,9 +284,6 @@ export default function RootLayout({
                 <meta name="apple-mobile-web-app-title" content="SuperCX" />
                 <meta name="mobile-web-app-capable" content="yes" />
 
-                {/* Security headers */}
-                <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-                <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
             </head>
             <body className="bg-background text-gray-200 font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
                 {children}
