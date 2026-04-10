@@ -5,11 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import PageHero from '@/components/sections/PageHero';
 import { Button } from '@/components/ui/Button';
 import { Mail, Phone, MapPin, MessageSquare, Clock, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { sendContactEmail } from '@/app/actions/contact';
-import { contactFormSchema, type ContactFormValues } from '@/lib/schemas';
+import { useState, useRef } from 'react';
 
 const contactMethods = [
     {
@@ -42,15 +38,6 @@ const offices = [
         address: 'HSR Layout, Bangalore 560102',
         type: 'Headquarters',
     },
-];
-
-const departments = [
-    { value: 'sales', label: 'Sales' },
-    { value: 'support', label: 'Support' },
-    { value: 'partnerships', label: 'Partnerships' },
-    { value: 'press', label: 'Press & Media' },
-    { value: 'careers', label: 'Careers' },
-    { value: 'other', label: 'Other' },
 ];
 
 // JSON-LD Structured Data for Local Business
@@ -130,38 +117,55 @@ const breadcrumbJsonLd = {
 export default function ContactClient() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm<ContactFormValues>({
-        resolver: zodResolver(contactFormSchema),
-        defaultValues: {
-            name: '',
-            email: '',
-            company: '',
-            department: 'sales',
-            message: '',
-        },
-    });
+    const validateForm = (): boolean => {
+        const form = formRef.current;
+        if (!form) return false;
 
-    const onSubmit = async (data: ContactFormValues) => {
+        const errors: Record<string, string> = {};
+        const company = (form.elements.namedItem('Company') as HTMLInputElement)?.value?.trim();
+        const lastName = (form.elements.namedItem('Last Name') as HTMLInputElement)?.value?.trim();
+        const email = (form.elements.namedItem('Email') as HTMLInputElement)?.value?.trim();
+
+        if (!company) errors.company = 'Company is required.';
+        if (!lastName) errors.lastName = 'Last Name is required.';
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errors.email = 'Please enter a valid email address.';
+        }
+
+        setFieldErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+
         setIsSubmitting(true);
         setSubmitStatus(null);
 
         try {
-            const result = await sendContactEmail(data);
+            const form = formRef.current!;
+            const formData = new FormData(form);
+
+            const res = await fetch('/api/zoho-lead', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await res.json();
 
             if (result.success) {
-                setSubmitStatus({ success: true, message: result.message || 'Message sent successfully!' });
-                reset();
+                setSubmitStatus({ success: true, message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.' });
+                form.reset();
+                setFieldErrors({});
             } else {
-                setSubmitStatus({ success: false, message: result.error || 'Something went wrong. Please try again.' });
+                setSubmitStatus({ success: false, message: 'Something went wrong. Please try again.' });
             }
-        } catch (error) {
-            setSubmitStatus({ success: false, message: 'An unexpected error occurred. Please try again.' });
+        } catch {
+            setSubmitStatus({ success: false, message: 'Something went wrong. Please try again.' });
         } finally {
             setIsSubmitting(false);
         }
@@ -221,7 +225,24 @@ export default function ContactClient() {
                             <h2 id="contact-form-heading" className="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
                             <p className="text-gray-400 mb-8">Fill out the form below and we&apos;ll get back to you within 24 hours.</p>
 
-                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" aria-label="Contact form">
+                            <form
+                                ref={formRef}
+                                id="webform987156000000595039"
+                                action="https://crm.zoho.in/crm/WebToLeadForm"
+                                name="WebToLeads987156000000595039"
+                                method="POST"
+                                onSubmit={handleSubmit}
+                                acceptCharset="UTF-8"
+                                className="space-y-6"
+                                aria-label="Contact form"
+                            >
+                                {/* Zoho hidden fields - Do not remove this code */}
+                                <input type="text" style={{ display: 'none' }} name="xnQsjsdp" defaultValue="fe7f0a748c199c3bda8b5fee6a3cdbf237f214d7a1bf066ed847db0638030183" />
+                                <input type="hidden" name="zc_gad" id="zc_gad" defaultValue="" />
+                                <input type="text" style={{ display: 'none' }} name="xmIwtLD" defaultValue="67c7a6ee708e8597b091826a8611fe069be710a02e06981453d112de284dc1494313bb8cc1c0a83fbf83e4fb86cc2aca" />
+                                <input type="text" style={{ display: 'none' }} name="actionType" defaultValue="TGVhZHM=" />
+                                <input type="text" style={{ display: 'none' }} name="returnURL" defaultValue="null" />
+
                                 {submitStatus && (
                                     <div className={`p-4 rounded-lg flex items-start gap-3 ${submitStatus.success ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'
                                         }`}>
@@ -232,81 +253,109 @@ export default function ContactClient() {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-400 mb-2">Name *</label>
+                                        <label htmlFor="First_Name" className="block text-sm font-medium text-gray-400 mb-2">First Name</label>
                                         <input
-                                            id="contact-name"
+                                            id="First_Name"
                                             type="text"
-                                            {...register('name')}
-                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-white/10'
-                                                }`}
-                                            placeholder="Your name"
-                                            autoComplete="name"
+                                            name="First Name"
+                                            maxLength={40}
+                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            placeholder="First name"
+                                            autoComplete="given-name"
                                         />
-                                        {errors.name && (
-                                            <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
-                                        )}
                                     </div>
                                     <div>
-                                        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-400 mb-2">Email *</label>
+                                        <label htmlFor="Last_Name" className="block text-sm font-medium text-gray-400 mb-2">Last Name <span className="text-red-400">*</span></label>
                                         <input
-                                            id="contact-email"
-                                            type="email"
-                                            {...register('email')}
-                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-white/10'
-                                                }`}
-                                            placeholder="you@company.com"
-                                            autoComplete="email"
+                                            id="Last_Name"
+                                            type="text"
+                                            name="Last Name"
+                                            maxLength={80}
+                                            required
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${fieldErrors.lastName ? 'border-red-500 focus:border-red-500' : 'border-white/10'}`}
+                                            placeholder="Last name"
+                                            autoComplete="family-name"
                                         />
-                                        {errors.email && (
-                                            <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
+                                        {fieldErrors.lastName && (
+                                            <p className="mt-1 text-sm text-red-400">{fieldErrors.lastName}</p>
                                         )}
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="contact-company" className="block text-sm font-medium text-gray-400 mb-2">Company</label>
+                                        <label htmlFor="Company" className="block text-sm font-medium text-gray-400 mb-2">Company <span className="text-red-400">*</span></label>
                                         <input
-                                            id="contact-company"
+                                            id="Company"
                                             type="text"
-                                            {...register('company')}
-                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            name="Company"
+                                            maxLength={200}
+                                            required
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${fieldErrors.company ? 'border-red-500 focus:border-red-500' : 'border-white/10'}`}
                                             placeholder="Your company"
                                             autoComplete="organization"
                                         />
+                                        {fieldErrors.company && (
+                                            <p className="mt-1 text-sm text-red-400">{fieldErrors.company}</p>
+                                        )}
                                     </div>
                                     <div>
-                                        <label htmlFor="contact-department" className="block text-sm font-medium text-gray-400 mb-2">Department *</label>
-                                        <select
-                                            id="contact-department"
-                                            {...register('department')}
-                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white focus:outline-none focus:border-primary transition-colors ${errors.department ? 'border-red-500 focus:border-red-500' : 'border-white/10'
-                                                }`}
-                                        >
-                                            {departments.map((dept) => (
-                                                <option key={dept.value} value={dept.value}>{dept.label}</option>
-                                            ))}
-                                        </select>
-                                        {errors.department && (
-                                            <p className="mt-1 text-sm text-red-400">{errors.department.message}</p>
+                                        <label htmlFor="Email" className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                                        <input
+                                            id="Email"
+                                            type="email"
+                                            name="Email"
+                                            maxLength={100}
+                                            className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors ${fieldErrors.email ? 'border-red-500 focus:border-red-500' : 'border-white/10'}`}
+                                            placeholder="you@company.com"
+                                            autoComplete="email"
+                                        />
+                                        {fieldErrors.email && (
+                                            <p className="mt-1 text-sm text-red-400">{fieldErrors.email}</p>
                                         )}
                                     </div>
                                 </div>
 
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label htmlFor="Mobile" className="block text-sm font-medium text-gray-400 mb-2">Mobile</label>
+                                        <input
+                                            id="Mobile"
+                                            type="tel"
+                                            name="Mobile"
+                                            maxLength={30}
+                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            placeholder="+91 98765 43210"
+                                            autoComplete="tel"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="Country" className="block text-sm font-medium text-gray-400 mb-2">Country</label>
+                                        <input
+                                            id="Country"
+                                            type="text"
+                                            name="Country"
+                                            maxLength={100}
+                                            className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors"
+                                            placeholder="Your country"
+                                            autoComplete="country-name"
+                                        />
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <label htmlFor="contact-message" className="block text-sm font-medium text-gray-400 mb-2">Message *</label>
+                                    <label htmlFor="Description" className="block text-sm font-medium text-gray-400 mb-2">Message</label>
                                     <textarea
-                                        id="contact-message"
+                                        id="Description"
+                                        name="Description"
                                         rows={5}
-                                        {...register('message')}
-                                        className={`w-full px-4 py-3 bg-[#161b22] border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors resize-none ${errors.message ? 'border-red-500 focus:border-red-500' : 'border-white/10'
-                                            }`}
+                                        className="w-full px-4 py-3 bg-[#161b22] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors resize-none"
                                         placeholder="Tell us how we can help..."
                                     />
-                                    {errors.message && (
-                                        <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
-                                    )}
                                 </div>
+
+                                {/* Honeypot - Do not remove */}
+                                <input type="text" name="aG9uZXlwb3Q" defaultValue="" style={{ display: 'none' }} />
 
                                 <Button
                                     type="submit"

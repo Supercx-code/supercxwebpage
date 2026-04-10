@@ -279,16 +279,35 @@ export default function BlogPage() {
                 </div>
             </section>
 
-            {/* Newsletter */}
+            {/* Newsletter - Connected to Zoho CRM */}
             <section className="py-24 border-t border-white/5" aria-labelledby="newsletter-heading">
                 <div className="container mx-auto px-6 text-center">
                     <h2 id="newsletter-heading" className="text-3xl font-bold text-white mb-4">Never Miss an Update</h2>
                     <p className="text-gray-400 mb-8 max-w-xl mx-auto">Subscribe to get the latest articles, product updates, and industry insights.</p>
-                    <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto" aria-label="Newsletter signup">
+                    <iframe name="zoho_iframe_blog" style={{ display: 'none' }} title="Newsletter form submission" />
+                    <form
+                        action="https://crm.zoho.in/crm/WebToLeadForm"
+                        method="POST"
+                        target="zoho_iframe_blog"
+                        acceptCharset="UTF-8"
+                        className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
+                        aria-label="Newsletter signup"
+                    >
+                        {/* Zoho hidden fields - Do not remove */}
+                        <input type="text" style={{ display: 'none' }} name="xnQsjsdp" value="fe7f0a748c199c3bda8b5fee6a3cdbf237f214d7a1bf066ed847db0638030183" readOnly />
+                        <input type="hidden" name="zc_gad" value="" />
+                        <input type="text" style={{ display: 'none' }} name="xmIwtLD" value="67c7a6ee708e8597b091826a8611fe069be710a02e06981453d112de284dc1494313bb8cc1c0a83fbf83e4fb86cc2aca" readOnly />
+                        <input type="text" style={{ display: 'none' }} name="actionType" value="TGVhZHM=" readOnly />
+                        <input type="text" style={{ display: 'none' }} name="returnURL" value="null" readOnly />
+                        <input type="hidden" name="Last Name" value="Newsletter Subscriber" />
+                        <input type="hidden" name="Company" value="Newsletter Signup" />
+                        <input type="text" name="aG9uZXlwb3Q" value="" style={{ display: 'none' }} readOnly />
+
                         <label htmlFor="newsletter-email" className="sr-only">Email address</label>
                         <input
                             id="newsletter-email"
                             type="email"
+                            name="Email"
                             placeholder="Enter your email"
                             required
                             className="flex-1 px-4 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-primary"

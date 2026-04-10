@@ -64,10 +64,29 @@ const Footer = () => {
                         <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-white">Ready to Scale Smarter with AI?</h2>
                         <p className="text-gray-400 text-sm sm:text-base">Join 100+ automation-first companies today.</p>
                     </div>
-                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                    <form
+                        onSubmit={handleSubscribe}
+                        action="https://crm.zoho.in/crm/WebToLeadForm"
+                        method="POST"
+                        target="zoho_iframe_footer"
+                        acceptCharset="UTF-8"
+                        className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto"
+                    >
+                        {/* Zoho hidden fields - Do not remove */}
+                        <input type="text" style={{ display: 'none' }} name="xnQsjsdp" value="fe7f0a748c199c3bda8b5fee6a3cdbf237f214d7a1bf066ed847db0638030183" readOnly />
+                        <input type="hidden" name="zc_gad" value="" />
+                        <input type="text" style={{ display: 'none' }} name="xmIwtLD" value="67c7a6ee708e8597b091826a8611fe069be710a02e06981453d112de284dc1494313bb8cc1c0a83fbf83e4fb86cc2aca" readOnly />
+                        <input type="text" style={{ display: 'none' }} name="actionType" value="TGVhZHM=" readOnly />
+                        <input type="text" style={{ display: 'none' }} name="returnURL" value="null" readOnly />
+                        <input type="hidden" name="Last Name" value="Newsletter Subscriber" />
+                        <input type="hidden" name="Company" value="Footer Signup" />
+                        <input type="text" name="aG9uZXlwb3Q" value="" style={{ display: 'none' }} readOnly />
+                        <iframe name="zoho_iframe_footer" style={{ display: 'none' }} title="Footer form submission" />
+
                         <div className="relative">
                             <input
                                 type="email"
+                                name="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
